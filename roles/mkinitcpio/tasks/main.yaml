@@ -1,0 +1,47 @@
+---
+- name: Install Firmware files
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - linux-firmware
+      - sof-firmware
+    state: present
+  notify:
+    - Regenerate initramfs
+
+- name: Install Plymouth
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - plymouth
+    state: present
+  notify:
+    - Regenerate initramfs
+
+
+- name: Ensure directory exists
+  become: true
+  become_user: root
+  ansible.builtin.file:
+    path: /etc/mkinitcpio.conf.d
+    state: directory
+    mode: 0755
+  register: mkinitcpio_exists
+
+- name: Push mkinitcpio configuration
+  become: true
+  become_user: root
+  ansible.builtin.template:
+    src: mkinitcpio.conf.j2
+    dest: /etc/mkinitcpio.conf.d/mkinitcpio-override.conf
+    mode: '0644'
+  notify:
+    - Regenerate initramfs
+  when: mkinitcpio_exists
+
+- name: Run mkinitcpio
+  become: true
+  become_user: root
+  ansible.builtin.command: "mkinitcpio -P"

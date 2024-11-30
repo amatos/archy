@@ -1,0 +1,33 @@
+---
+- name: Deploy Cockpit
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - cockpit
+      - cockpit-packagekit
+      - cockpit-pcp
+      - cockpit-storaged
+    state: present
+  when: cockpit.install
+
+- name: Enable cockpit
+  become: true
+  become_user: root
+  ansible.builtin.systemd:
+    name: cockpit.socket
+    enabled: true
+  when:
+    - cockpit.install
+    - cockpit.enable
+
+- name: Start cockpit
+  become: true
+  become_user: root
+  ansible.builtin.systemd:
+    name: cockpit.socket
+    enabled: true
+    state: started
+  when:
+    - cockpit.install
+    - cockpit.start

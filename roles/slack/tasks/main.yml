@@ -1,0 +1,17 @@
+---
+- name: Install Slack from AUR
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - slack-desktop
+    state: present
+
+
+- name: Copy the wayland desktop file
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: slack-wayland.desktop
+    dest: /usr/share/applications/slack-wayland.desktop
+    mode: 0644

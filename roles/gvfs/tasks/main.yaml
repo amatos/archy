@@ -1,0 +1,18 @@
+---
+- name: Install gvfs modules
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - gvfs
+      - gvfs-goa
+      - gvfs-afc
+      - gvfs-mtp
+      - gvfs-nfs
+      - gvfs-smb
+      - gvfs-wsdd
+      - gvfs-dnssd
+      - gvfs-google
+      - gvfs-gphoto2
+      - gvfs-onedrive
+    state: present

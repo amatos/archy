@@ -1,0 +1,60 @@
+- name: Install firewalld
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: firewalld
+    state: present
+
+- name: Enable and start FirewallD
+  become: true
+  become_user: root
+  ansible.builtin.service:
+    name: firewalld.service
+    enabled: true
+    state: started
+
+- name: Change network for interfaces to "Home" (permanent)
+  become: true
+  become_user: root
+  ansible.posix.firewalld:
+    zone: home
+    interface: "{{ item }}"
+    permanent: true
+    state: enabled
+  with_items:
+    - "{{ ansible_interfaces }}"
+  when: ('item.startswith("wl")') or ('item.startswith("enp")')
+  notify: restart FirewallD
+
+- name: Change network for interfaces to "Home" (runtime)
+  become: true
+  become_user: root
+  ansible.posix.firewalld:
+    zone: home
+    interface: "{{ item }}"
+    state: enabled
+  with_items:
+    - "{{ ansible_interfaces }}"
+  when: ('item.startswith("wl")') or ('item.startswith("enp")')
+  notify: restart FirewallD
+
+- name: Updating home zone rules
+  become: true
+  become_user: root
+  ansible.posix.firewalld:
+    zone: home
+    service: "{{ item }}"
+    permanent: true
+    state: enabled
+  with_items:
+    - ssh
+    - mdns
+    - samba-client
+    - dhcpv6-client
+    - cockpit
+    - ipsec
+    - syncthing
+    - syncthing-gui
+    - syncthing-relay
+    - upnp-client
+    - mndp

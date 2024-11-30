@@ -1,0 +1,14 @@
+---
+- name: Install QT5-wayland
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: qt5-wayland
+    state: present
+
+- name: Install QT6-wayland
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: qt6-wayland
+    state: present

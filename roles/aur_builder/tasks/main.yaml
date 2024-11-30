@@ -1,0 +1,64 @@
+---
+- name: Check if aur_builder
+  become: true
+  become_user: root
+  getent:
+    database: passwd
+    key: "{{ aur_builder_user }}"
+  ignore_errors: yes
+  register: aur_builder_user_exists
+
+- name: Create aur_builder user
+  become: true
+  become_user: root
+  ansible.builtin.user:
+    name: aur_builder
+    group: wheel
+    system: true
+
+- name: Remove aur_builder sudoers (if existing)
+  ansible.builtin.file:
+    path: /etc/sudoers.d/11-install-aur_builder
+    state: absent
+
+- name: Add aur_builder to sudoers
+  become: true
+  become_user: root
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: "aur_builder ALL=(ALL:ALL) NOPASSWD: ALL"
+    create: true
+    validate: "visudo -cf %s"
+    mode: 0440
+
+- name: Install base-devel
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: base-devel
+    state: present
+  when: aur_builder_install_yay
+
+- name: Run rust-up to define rust environment
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  ansible.builtin.command: '/usr/bin/rustup default stable'
+
+- name: Install yay manager for AUR
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: yay
+    use: makepkg
+    state: present
+  when: aur_builder_install_yay
+  register: yay_installed
+
+- name: Install powerpill pacman assistant
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: powerpill
+    use: yay
+    state: present
+  when: yay_installed

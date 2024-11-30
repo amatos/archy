@@ -1,0 +1,17 @@
+---
+- name: Install Libre Office (fresh)
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - libreoffice-fresh
+      - beanshell
+      - coin-or-mp
+      - gst-plugins-base-libs
+      - libmythes
+      - libpaper
+      - libwpg
+      - pstoedit
+      - rhino
+      - sane
+    state: present

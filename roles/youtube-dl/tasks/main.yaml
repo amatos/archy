@@ -1,0 +1,17 @@
+---
+- name: Install youtube-dl
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - youtube-dl
+
+- name: Install youtube-dl dependencies
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - ffmpeg
+      - rtmpdump
+      - atomicparsley
+      - python-pycryptodome

@@ -1,0 +1,16 @@
+---
+- name: Install template
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - template
+    state: present
+
+- name: Install aur_template
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: template
+    use: yay
+    state: present

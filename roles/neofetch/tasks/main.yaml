@@ -1,0 +1,24 @@
+---
+- name: Install neofetch
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: neofetch
+    use: yay
+    state: present
+
+- name: Install neofetch Libraries
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - catimg
+      - chafa
+      - feh
+      - jp2a
+      - libcaca
+      - nitrogen
+      - w3m
+      - jpegexiforient
+    use: yay
+    state: present

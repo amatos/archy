@@ -1,0 +1,47 @@
+- name: Install kde-games
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - bomber
+      - bovo
+      - granatier
+      - kajongg
+      - kapman
+      - katomic
+      - kblackbox
+      - kblocks
+      - kbounce
+      - kbreakout
+      - kdiamond
+      - kfourinline
+      - kgoldrunner
+      - kigo
+      - killbots
+      - kiriki
+      - kjumpingcube
+      - klickety
+      - klines
+      - kmahjongg
+      - kmines
+      - knavalbattle
+      - knetwalk
+      - knights
+      - kolf
+      - kollision
+      - konquest
+      - kpat
+      - kreversi
+      - kshisen
+      - ksirk
+      - ksnakeduel
+      - kspaceduel
+      - ksquares
+      - ksudoku
+      - ktuberling
+      - kubrick
+      - lskat
+      - palapeli
+      - picmi
+      - skladnik
+    state: present

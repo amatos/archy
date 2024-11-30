@@ -1,0 +1,9 @@
+---
+- name: Install qemu
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - qemu
+      - qemu-desktop
+      - qemu-docs

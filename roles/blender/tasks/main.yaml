@@ -1,0 +1,17 @@
+---
+- name: Install Blender
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - blender
+    state: present
+
+- name: Install Blender dependencies
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - hiprt
+      - hip-runtime-amd
+    state: present

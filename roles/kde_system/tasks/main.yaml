@@ -1,0 +1,14 @@
+- name: Install kde-system
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - dolphin
+      - kcron
+      - kde-inotify-survey
+      - khelpcenter
+      - kio-admin
+      - kjournald
+      - ksystemlog
+      - partitionmanager
+    state: present

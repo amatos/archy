@@ -1,0 +1,22 @@
+- name: Install kde-network
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - alligator
+      - angelfish
+      - falkon
+      - kdeconnect
+      - kdenetwork-filesharing
+      - kget
+      - kio-extras
+      - kio-gdrive
+      - kio-zeroconf
+      - konqueror
+      - konversation
+      - krdc
+      - krfb
+      - ktorrent
+      - neochat
+      - tokodon
+    state: present

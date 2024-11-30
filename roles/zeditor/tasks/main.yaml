@@ -1,0 +1,8 @@
+---
+- name: Install zeditor
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - zed
+    state: present

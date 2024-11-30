@@ -1,0 +1,8 @@
+---
+- name: Install meld
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - meld
+    state: present

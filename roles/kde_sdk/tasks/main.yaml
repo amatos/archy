@@ -1,0 +1,20 @@
+- name: Install kde-sdk
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - cervisia
+      - dolphin-plugins
+      - kapptemplate
+      - kcachegrind
+      - kde-dev-scripts
+      - kde-dev-utils
+      - kdesdk-kio
+      - kdesdk-thumbnailers
+      - kirigami-gallery
+      - kompare
+      - lokalize
+      - massif-visualizer
+      - poxml
+      - umbrello
+    state: present

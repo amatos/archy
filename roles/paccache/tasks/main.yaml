@@ -1,0 +1,15 @@
+---
+- name: Install paccache
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: pacman-contrib
+    state: present
+
+- name: Enable and start paccache to clean pacman caches
+  become: true
+  become_user: root
+  ansible.builtin.service:
+    name: paccache.timer
+    enabled: true
+    state: started

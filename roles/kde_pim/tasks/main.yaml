@@ -1,0 +1,20 @@
+- name: Install kamera
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - akonadi-calendar-tools
+      - akonadiconsole
+      - akregator
+      - grantlee-editor
+      - itinerary
+      - kaddressbook
+      - kalarm
+      - kdepim-addons
+      - kleopatra
+      - kmail
+      - kontact
+      - korganizer
+      - merkuro
+      - zanshin
+    state: present

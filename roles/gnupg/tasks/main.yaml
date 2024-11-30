@@ -1,0 +1,150 @@
+---
+- name: Install GPG
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - gnupg
+
+- name: Install paperbackup
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: paperbackup-git
+    use: yay
+    state: present
+
+- name: Ensure directory exists
+  ansible.builtin.file:
+    path: ~/.gnupg
+    state: directory
+    mode: 0700
+
+- name: Copy gpg config files
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: ~/.gnupg/
+    mode: 0600
+  loop:
+    - gpg-agent.conf
+    - gpg.conf
+    - scdaemon.conf
+  register: gpg_config
+
+- name: Restart gpg services
+  when: gpg_config.changed  # noqa: no-handler
+  changed_when: false
+  ansible.builtin.command:
+    cmd: gpgconf --kill all
+
+- name: Set gpg key to use with git
+  community.general.git_config:
+    name: user.signingkey
+    scope: global
+    value: "{{ gpg_user_key }}"
+  when: gpg_user_key is defined
+
+- name: Set git to always use gpg
+  community.general.git_config:
+    name: commit.gpgsign
+    scope: global
+    value: "true"
+  when: gpg_sign_git_commits
+
+- name: Ensure scripts directory exists
+  ansible.builtin.file:
+    path: "~/.local/bin"
+    state: directory
+    mode: 0755
+
+- name: Copy gpg_ lib file
+  ansible.builtin.copy:
+    src: scripts/lib.sh
+    dest: "~/.local/bin"
+    mode: 0644
+
+- name: Copy gpg_ scripts
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "~/.local/bin"
+    mode: 0755
+  loop:
+    - scripts/gpg_setup_keyring.sh
+    - scripts/gpg_extend_subkeys.sh
+
+- name: Ensure /usr/local/bin directory exists
+  become: true
+  become_user: "root"
+  ansible.builtin.file:
+    path: "/usr/local/bin"
+    state: directory
+    mode: 0755
+
+- name: Template fish plugin
+  ansible.builtin.include_role:
+    name: helper_fish_plugin
+  vars:
+    helper_fish_plugin_directory_name: gpg
+    helper_fish_plugin_template_name: gpg-agent.fish
+
+- name: Ensure that provided GPG key is imported and trusted
+  # Only run when key is actually provided
+  when: gpg_user_key | length > 0
+  block:
+    - name: Check if the key is available in keyring
+      ansible.builtin.command:
+        cmd: gpg --with-colons --list-keys "0x{{ gpg_user_key }}"
+      changed_when: false
+      failed_when: false
+      register: gpg_key_present
+
+    - name: Import gpg key
+      ansible.builtin.command:
+        cmd: gpg --receive-keys "0x{{ gpg_user_key }}"
+      changed_when: true
+      when: gpg_key_present.rc != 0
+
+    - name: Obtain list of trusted keys
+      ansible.builtin.command:
+        cmd: gpg --export-ownertrust
+      changed_when: false
+      register: gpg_trusted_keys
+
+    - name: Check if the key is ultimately trusted
+      ansible.builtin.command:
+        argv:
+          - python3
+          - -c
+          - |
+            import sys;
+            key_fingerprint = list(filter(lambda x: "fpr" in x, {{ gpg_key_present.stdout_lines }}))[0].split(":")[-2];
+            print(key_fingerprint);
+            if "{0}:6:".format(key_fingerprint) not in {{ gpg_trusted_keys.stdout_lines }}: sys.exit(1);
+      changed_when: false
+      failed_when: false
+      register: gpg_key_is_trusted
+
+    - name: Ultimately trust the key
+      ansible.builtin.command:
+        cmd: gpg --command-fd 0 --edit-key "0x{{ gpg_user_key }}"
+        stdin: "trust\n5\ny\n"
+      changed_when: true
+      when: gpg_key_is_trusted.rc != 0
+
+    - name: Ensure ssh directory exists
+      ansible.builtin.file:
+        path: ~/.ssh
+        state: directory
+        mode: 0700
+
+    - name: Obtain ssh public key
+      ansible.builtin.command:
+        cmd: gpg --export-ssh-key "0x{{ gpg_user_key }}"
+      changed_when: false
+      register: gpg_ssh_key
+
+    - name: Write ssh public key
+      ansible.builtin.copy:
+        content: "{{ gpg_ssh_key.stdout }}"
+        dest: ~/.ssh/id_smartcard_{{ ansible_user_id }}.pub
+        mode: 0644

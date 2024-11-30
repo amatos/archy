@@ -1,0 +1,9 @@
+---
+- name: Install KDE Tools
+  hosts: all
+  become: true
+  become_user: root
+  roles:
+    - { role: kde_tools, tags: ["kde_tools"] }
+  tags:
+    - kde

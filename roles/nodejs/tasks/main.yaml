@@ -1,0 +1,9 @@
+---
+- name: Install nodejs
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - nodejs
+      - npm
+    state: present

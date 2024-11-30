@@ -1,0 +1,16 @@
+---
+- name: Install udiskie
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - udiskie
+    state: present
+
+- name: Install udiskie-systemd
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: udiskie-systemd-git
+    use: yay
+    state: present

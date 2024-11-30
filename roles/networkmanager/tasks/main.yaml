@@ -1,0 +1,44 @@
+---
+- name: Install network manager tools
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - ethtool
+      - networkmanager
+    state: present
+
+- name: Start and enable NetworkManager service
+  become: true
+  become_user: root
+  ansible.builtin.service:
+    name: NetworkManager
+    state: started
+    enabled: true
+
+- name: Enable systemd-resolved service
+  become: true
+  become_user: root
+  ansible.builtin.service:
+    name: systemd-resolved
+    state: started
+    enabled: true
+  register: resolved
+
+- name: Deploy stub dns
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: 10-stub-dns.conf
+    dest: /etc/systemd/resolved.conf.d/
+  notify:
+    - Restart resolved
+
+- name: Set NetworkManager to update timesyncd time servers
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: 10-update-timesyncd
+    dest: /etc/NetworkManager/dispatcher.d/10-update-timesyncd
+    mode: "0755"
+  register: updated_timesyncd

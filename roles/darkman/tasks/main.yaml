@@ -1,0 +1,16 @@
+---
+- name: Install darkman
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: darkman
+    state: present
+
+- name: Enable and start darkman for {{ user.name }}
+  become: true
+  become_user: '{{ user.name }}'
+  ansible.builtin.service:
+    name: darkman
+    enabled: true
+    state: started
+    scope: user

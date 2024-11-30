@@ -1,0 +1,110 @@
+---
+- name: Install Steam
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - steam
+      - steam-native-runtime
+    state: present
+
+- name: Install Mesa
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - mesa
+      - lib32-mesa
+      - libva-mesa-driver
+    state: present
+
+- name: Install steamtinkerlaunch
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: 
+      - steamtinkerlaunch
+    use: yay
+    state: present
+
+- name: Install v4l2loopback-dkms
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - v4l2loopback-dkms
+    state: present
+
+- name: Install vkbasalt
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - vkbasalt
+      - vkbasalt-cli
+      - lib32-vkbasalt
+    use: yay
+    state: present
+
+- name: Install wf-recorder
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - wf-recorder
+    state: present
+    
+- name: Install proton-up
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - protonup-qt
+    use: yay
+    state: present
+
+- name: Install sndio
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - sndio
+    state: present
+
+- name: Install goverlay
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - goverlay
+    state: present
+
+- name: Install mangohud
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - mangohud
+    state: present
+
+- name: Install required 32-bit libraries
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - lib32-dbus
+      - lib32-glu
+      - lib32-libcurl-compat
+      - lib32-mesa
+      - lib32-nss
+      - lib32-systemd
+    state: present
+
+- name: Install steam-hdr
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: 
+      - steam-hdr
+    use: yay
+    state: present

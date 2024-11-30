@@ -1,0 +1,10 @@
+---
+- name: Install Kitty
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - kitty
+      - kitty-terminfo
+      - kitty-shell-integration
+    state: present

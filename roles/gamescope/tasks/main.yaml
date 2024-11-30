@@ -1,0 +1,8 @@
+---
+- name: Install gamescope
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - gamescope
+    state: present

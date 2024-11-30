@@ -1,0 +1,8 @@
+---
+dependencies:
+  - role: seahorse
+  - role: sushi
+  - role: evince
+  - role: gvfs
+  - role: libportal
+  - role: poppler

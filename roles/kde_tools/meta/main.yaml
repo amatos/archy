@@ -1,0 +1,16 @@
+---
+dependencies:
+  - role: arch_xdg_menu
+  - role: kwallet_keyring
+  - role: appindicator
+  - role: bluez
+  - role: cups
+  - role: samba
+  - role: kde_accessibility
+  - role: kde_games
+  - role: kde_graphics
+  - role: kde_multimedia
+  - role: kde_network
+  - role: kde_system
+  - role: kde_utilities
+  - role: kdevelop

@@ -1,0 +1,48 @@
+---
+- name: Install SDDM
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - sddm
+      - qt6-virtualkeyboard
+      - weston
+      - layer-shell-qt
+      - layer-shell-qt5
+    state: present
+
+- name: Create /etc/sddm.conf.d/ directory
+  become: true
+  become_user: root
+  ansible.builtin.file:
+    path: /etc/sddm.conf.d/
+    state: directory
+    mode: "0755"
+  register: created_sddm_conf_dir
+
+- name: Create account services avatar directory
+  become: true
+  become_user: root
+  ansible.builtin.file:
+    path: /var/lib/AccountsService/icons/
+    state: directory
+    mode: "0755"
+
+- name: Deploy virtual keyboard config
+  ansible.builtin.copy:
+    src: 30-virtual_keyboard.conf
+    dest: /etc/sddm.conf.d/30-virtual_keyboard.conf
+    mode: "0644"
+
+- name: Deploy user avatar config
+  ansible.builtin.copy:
+    src: 40-faces.conf
+    dest: /etc/sddm.conf.d/40-faces.conf
+    mode: "0644"
+
+- name: Enable sddm greeter
+  become: true
+  become_user: root
+  ansible.builtin.service:
+    name: sddm
+    enabled: true

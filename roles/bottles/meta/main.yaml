@@ -1,0 +1,3 @@
+---
+dependencies:
+  - role: gst_plugins

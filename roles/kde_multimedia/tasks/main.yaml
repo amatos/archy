@@ -1,0 +1,20 @@
+- name: Install kde-multimedia
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - audex
+      - audiocd-kio
+      - audiotube
+      - dragon
+      - elisa
+      - ffmpegthumbs
+      - juk
+      - k3b
+      - kamoso
+      - kasts
+      - kdenlive
+      - kmix
+      - kwave
+      - plasmatube
+    state: present

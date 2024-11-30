@@ -1,0 +1,24 @@
+---
+- name: CLI
+  hosts: all
+  become: true
+  become_user: root
+  roles:
+    - { role: git, tags: ["git"] }
+    - { role: gnupg, tags: ["gnupg"] }
+    - { role: devtools, tags: ["devtools"] }
+    - { role: rust, tags: ["rust"] }
+    - { role: java, tags: ["java"] }
+    - { role: pkgfile, tags: ["pkgfile"] }
+    - { role: syncthing, tags: ["syncthing"] }
+    - { role: imagemagick, tags: ["imagemagick"] }
+    - { role: chezmoi, tags: ["chezmoi"] }
+    - { role: cups, tags: ["cups"] }
+    - { role: neovim, tags: ["neovim"] }
+    - { role: samba, tags: ["samba"] }
+    - { role: atuin, tags: ["atuin"] }
+    - { role: neofetch, tags: ["neofetch"] }
+    - { role: cli_packages, tags: ["cli_packages"] }
+    - { role: firewall, ctags: ["firewall"] }
+  tags:
+    - cli

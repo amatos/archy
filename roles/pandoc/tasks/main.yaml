@@ -1,0 +1,7 @@
+---
+- name: Install Pandoc
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: pandoc
+    state: present

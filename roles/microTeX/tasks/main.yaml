@@ -1,0 +1,12 @@
+---
+- name: Install MicroTeX (embedded LaTeX rendering library)
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - tinyxml2
+      - gtkmm3
+      - gtksourceviewmm
+      - cairomm
+    use: yay
+    state: present

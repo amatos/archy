@@ -1,0 +1,29 @@
+---
+dependencies:
+  - role: gui_packages
+  - role: avizo
+  - role: brightnessctl
+  - role: clipse
+  - role: fuzzel
+  - role: grim
+  - role: kitty
+  - role: microTeX
+  - role: network_manager_applet
+  - role: qt6_multimedia
+  - role: qt_wayland
+  - role: regreet
+  - role: greetd_hyprland
+  - role: slurp
+  - role: swaync
+  - role: swww
+  - role: udiskie
+  - role: uwsm
+  - role: waybar
+  - role: wayland
+  - role: wlogout
+  - role: font_manager
+  - role: arch_xdg_menu
+  - role: kde_tools
+    when: hypr_style == "kde"
+  - role: gnome_tools
+    when: hypr_style != "kde"

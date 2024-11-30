@@ -1,0 +1,8 @@
+---
+- name: Install atuin
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - atuin
+    state: present

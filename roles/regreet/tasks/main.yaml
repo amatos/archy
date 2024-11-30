@@ -1,0 +1,34 @@
+---
+- name: Install regreet-git
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: greetd-regreet-git
+    use: yay
+    state: present
+
+- name: Deploy regreet.toml
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: regreet.toml
+    dest: /etc/greetd/regreet.toml
+    mode: "0644"
+
+- name: Deploy regreet.css
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: regreet.css
+    dest: /etc/greetd/regreet.css
+    mode: "0644"
+
+- name: Create /usr/local/backgrounds for regreet background images
+  become: true
+  become_user: root
+  ansible.builtin.file:
+    path: /usr/local/backgrounds
+    state: directory
+    mode: "0755"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"

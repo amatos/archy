@@ -1,0 +1,11 @@
+---
+- name: Install mpv
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - mpv
+      - mpv-mpris
+      - baka-mplayer
+      - celluloid
+      - haruna

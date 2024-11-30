@@ -1,0 +1,8 @@
+---
+- name: Install solaar
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - solaar
+    state: present

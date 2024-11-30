@@ -1,0 +1,10 @@
+---
+- name: Install intellij-idea-ultimate-edition
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - intellij-idea-ultimate-edition
+      - intellij-idea-ultimate-edition-jre
+    use: yay
+    state: present

@@ -1,0 +1,86 @@
+---
+- name: Install plasma
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - plasma
+    state: present
+
+- name: Install XDG portals
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - xdg-desktop-portal-gtk
+    state: present
+
+- name: Fix Global Menu not showing in some apps
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - appmenu-gtk-module
+      - libdbusmenu-glib
+      - plasma5-integration
+    state: present
+
+- name: Install plasma-pa
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - plasma-pa
+    state: present
+
+- name: Install powerdevil
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - powerdevil
+      - power-profiles-daemon
+    state: present
+
+- name: Install phonon
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - phonon-qt6-vlc
+    state: present
+
+- name: Install Additional misc KCMs
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - sddm-kcm
+      - kde-gtk-config
+      - plymouth-kcm
+      - flatpak-kcm
+    state: present
+
+- name: Install WACOM tablet driver
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - wacomtablet
+    state: present
+
+- name: Install colord for ICC profiles
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - colord-kde
+    state: present
+
+- name: Install kscreen for additional monitor manager bits
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - kscreen
+    state: present

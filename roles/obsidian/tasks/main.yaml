@@ -1,0 +1,16 @@
+---
+- name: Install obsidian
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - obsidian
+    state: present
+
+- name: Install obsidian-cli
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: obsidian-cli
+    use: yay
+    state: present

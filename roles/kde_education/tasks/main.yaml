@@ -1,0 +1,27 @@
+- name: Install kde-education
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - artikulate
+      - blinken
+      - cantor
+      - kalgebra
+      - kalzium
+      - kanagram
+      - kbruch
+      - kgeography
+      - khangman
+      - kig
+      - kiten
+      - klettres
+      - kmplot
+      - ktouch
+      - kturtle
+      - kwordquiz
+      - marble
+      - minuet
+      - parley
+      - rocs
+      - step
+    state: present

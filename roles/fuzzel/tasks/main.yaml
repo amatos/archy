@@ -1,0 +1,7 @@
+---
+- name: Install fuzzel
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: fuzzel
+    state: present

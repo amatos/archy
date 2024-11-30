@@ -1,0 +1,7 @@
+- name: Install winbox
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: winbox
+    use: yay
+    state: present

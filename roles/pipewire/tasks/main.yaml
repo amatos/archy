@@ -1,0 +1,23 @@
+---
+- name: Install pipewire
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - alsa-utils
+      - pipewire
+      - pipewire-audio
+      - pipewire-jack
+      - pipewire-pulse
+      - pipewire-session-manager
+      - qpwgraph
+      - wireplumber
+    state: present
+
+- name: Install pavucontrol
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - pavucontrol
+    state: present

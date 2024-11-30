@@ -1,0 +1,46 @@
+---
+- name: Install profile-sync-daemon
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: profile-sync-daemon
+    state: present
+
+- name: Install additional profile-sync-daemon profiles
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - profile-sync-daemon-brave
+      - profile-sync-daemon-zen
+      - profile-sync-daemon-zotero
+      - profile-sync-daemon-edge-stable
+    use: yay
+    state: present
+
+- name: Create ~/.config/psd directory
+  become: true
+  become_user: '{{ user.name }}'
+  ansible.builtin.file:
+    path: ~/.config/psd
+    state: directory
+    mode: '0755'
+  register: psd_dir_created
+  
+- name: Copy profile-sync-daemon config file
+  become: true
+  become_user: '{{ user.name }}'
+  ansible.builtin.copy:
+    src: psd.conf
+    dest: ~/.config/psd/psd.conf
+    mode: '0644'
+  when: psd_dir_created
+
+- name: Enable and start profile-sync-daemon user service
+  become: true
+  become_user: '{{ user.name }}'
+  ansible.builtin.service:
+    name: psd.service
+    enabled: true
+    state: started
+    scope: user

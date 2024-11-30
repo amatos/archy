@@ -1,0 +1,6 @@
+---
+dependencies:
+  - role: gamemode
+  - role: gamescope
+  - role: fonts
+  - role: amd_gpu

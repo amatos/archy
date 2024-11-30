@@ -1,0 +1,29 @@
+---
+- name: Install Avahi mDNS
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: avahi
+    state: present
+  register: avahi_installed
+
+- name: Deploy disable_mdns
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: 1-disable_mdns.conf
+    dest: /etc/systemd/resolved.conf.d/
+  notify:
+    - Restart resolved
+  register: no_resolvedmdns
+
+- name: Start Avahi Daemon
+  become: true
+  become_user: root
+  ansible.builtin.service:
+    name: avahi-daemon
+    state: started
+    enabled: true
+  when:
+    - avahi_installed
+    - no_resolvedmdns

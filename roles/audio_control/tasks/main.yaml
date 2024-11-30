@@ -1,0 +1,23 @@
+- name: Install pamixer
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - pamixer
+    state: present
+
+- name: Install pulsemixer
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - pulsemixer
+    state: present
+
+- name: Install pavucontrol
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - pavucontrol
+    state: present

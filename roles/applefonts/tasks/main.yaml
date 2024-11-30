@@ -1,0 +1,8 @@
+---
+- name: Install Nerd font patched Apple fonts
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: nerd-fonts-apple
+    use: yay
+    state: present

@@ -1,0 +1,10 @@
+---
+- name: Games
+  hosts: all
+  become: true
+  become_user: root
+  roles:
+    - { role: steam, tags: ["steam"] }
+    - { role: cartridges, tags: ["cartridges"] }
+  tags:
+    - games

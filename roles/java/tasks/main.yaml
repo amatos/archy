@@ -1,0 +1,25 @@
+- name: Install Java openjdk
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: 
+      - jdk-openjdk
+      - openjdk-doc
+      - maven
+    state: present
+
+- name: Install Java runtime
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: 
+      - java-runtime
+    state: present
+
+- name: Install Java Rhino
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: 
+      - java-rhino
+    state: present

@@ -1,0 +1,8 @@
+---
+- name: Install sublime-text
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: sublime-text-4 
+    use: yay
+    state: present

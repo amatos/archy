@@ -1,0 +1,8 @@
+---
+- name: Install QT6-Multimedia
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - qt6-multimedia-ffmpeg
+    state: present

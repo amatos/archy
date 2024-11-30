@@ -1,0 +1,8 @@
+---
+- name: Install flameshot
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - flameshot
+    state: present

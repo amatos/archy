@@ -1,0 +1,28 @@
+---
+- name: Install pacman-contrib
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: pacman-contrib
+    state: present
+
+- name: Install pkgfile
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: pkgfile
+    state: present
+  register: pkgfile_installed
+
+- name: Run pkgfile update
+  become: true
+  become_user: root
+  ansible.builtin.shell: 'pkgfile --update'
+
+- name: Start pkgfile-update.timer
+  become: true
+  become_user: root
+  ansible.builtin.systemd_service:
+    name: pkgfile-update.timer
+    state: started
+  when: pkgfile_installed

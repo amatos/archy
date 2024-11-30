@@ -1,0 +1,4 @@
+- name: Handle template
+  ansible.builtin.command: "template"
+  become: true
+  become: root

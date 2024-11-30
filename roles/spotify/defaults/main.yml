@@ -1,0 +1,9 @@
+---
+spotify_email: "{{ user_email }}"
+spotify_spotifyd_enable: false
+spotify_spotifyd_password_cmd: "rbw get Spotify"
+spotify_spotifyd_device_name: "spotifyd@{{ ansible_hostname }}"
+spotify_spotifyd_bitrate: "160"
+# spotifyd doesn't not expand this variable, thus we need to do it here
+spotify_spotifyd_cache_path: "{{ lookup('env', 'HOME') }}/.cache/spotifyd"
+spotify_spotifyd_cache_size: "10000000000"

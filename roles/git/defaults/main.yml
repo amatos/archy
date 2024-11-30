@@ -1,0 +1,8 @@
+---
+git_email: "{{ user.email }}"
+git_username: "{{ user.name }}"
+git_install_hub: true
+git_sendemail_confirm: "always"
+git_sendemail_mailbox: ""
+git_sendemail_from: "{{ user.name }} <{{ user.email }}>"
+git_sendemail_command: "/usr/bin/msmtp"

@@ -1,0 +1,3 @@
+---
+- name: display post install message
+  debug: msg="{{ post_install_message.split('\n') }}"

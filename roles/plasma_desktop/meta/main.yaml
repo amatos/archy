@@ -1,0 +1,22 @@
+---
+dependencies:
+  - role: clipse
+  - role: firefox
+  - role: flameshot
+  - role: gui_packages
+  - role: kde_accessibility
+  - role: kde_games
+  - role: kde_graphics
+  - role: kde_multimedia
+  - role: kde_network
+  - role: kde_system
+  - role: kde_tools
+  - role: kde_utilities
+  - role: kdevelop
+  - role: kitty
+  - role: mpv
+  - role: pipewire
+  - role: pipewire
+  - role: qt6_multimedia
+  - role: qt_wayland
+  - role: sddm

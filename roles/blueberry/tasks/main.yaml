@@ -1,0 +1,8 @@
+---
+- name: Install blueberry (patched for wayland appindicator)
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: blueberry-wayland
+    use: yay
+    state: present

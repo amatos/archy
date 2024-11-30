@@ -1,0 +1,44 @@
+---
+- name: Install greetd greeter
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: greetd
+    use: yay
+    state: present
+  register: greetded
+
+- name: Create /etc/greetd/ directory
+  become: true
+  become_user: root
+  ansible.builtin.file:
+    path: /etc/greetd/
+    state: directory
+    mode: "0755"
+  when: greetded
+  register: greetd_configdir
+
+- name: Deploy greetd config.toml
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: config.toml
+    dest: /etc/greetd/config.toml
+    mode: "0644"
+  when: greetd_configdir
+
+- name: Deploy greetd pam config
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: greetd
+    dest: /etc/pam.d/greetd
+    mode: "0644"
+  when: greetded
+
+- name: Enable greetd greeter
+  become: true
+  become_user: root
+  ansible.builtin.service:
+    name: greetd
+    enabled: true

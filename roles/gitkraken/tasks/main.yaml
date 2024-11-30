@@ -1,0 +1,15 @@
+- name: Install gitkraken
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: gitkraken
+    use: yay
+    state: present
+
+- name: Install gitkraken-cli
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: gitkraken-cli
+    use: yay
+    state: present

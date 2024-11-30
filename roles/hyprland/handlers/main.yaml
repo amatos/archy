@@ -1,0 +1,10 @@
+- name: Reload hyprctl
+  ansible.builtin.command: "hyprctl reload"
+  become: true
+  become_user: '{{ user.name }}'
+
+- name: Run hyprpm update
+  ansible.builtin.command: "hyprpm update"
+  become: true
+  become_user: '{{ user.name }}'
+

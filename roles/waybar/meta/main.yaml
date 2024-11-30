@@ -1,0 +1,4 @@
+---
+dependencies:
+  - role: waybar_mpris
+  - role: nwg_drawer

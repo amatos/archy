@@ -1,0 +1,159 @@
+---
+- name: Install kate
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - kate
+      - python-lsp-server
+      - texlab
+    state: present
+
+- name: Install gwenview
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - gwenview
+      - kimageformats
+      - qt6-imageformats
+    state: present
+
+- name: Install kamera
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - kamera
+    state: present
+
+- name: Install konsole
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - konsole
+      - keditbookmarks
+    state: present
+
+- name: Install breeze-icons
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - breeze-icons
+    state: present
+
+- name: Install kvantum
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - kvantum
+      - kvantum-qt5
+    state: present
+
+- name: Install okular
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - okular
+      - ebook-tools
+      - kdegraphics-mobipocket
+      - unrar
+    state: present
+
+- name: Install kcalc
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - kcalc
+    state: present
+
+- name: Install dolphin
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - dolphin
+      - dolphin-plugins
+      - ffmpegthumbs
+      - kde-cli-tools
+      - kdegraphics-thumbnailers
+      - kdenetwork-filesharing
+      - kio-admin
+      - konsole
+      - purpose
+    state: present
+
+- name: Install ark
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - ark
+    state: present
+
+- name: Install bluedevil
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - ark
+      - arj
+      - lrzip
+      - lzop
+      - p7zip
+      - unarchiver
+      - unrar
+    state: present
+
+- name: Install drkonkqi
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - drkonqi
+    state: present
+
+- name: Install kwallet
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - kwallet
+      - kwallet-pam
+      - kwalletmanager
+    state: present
+
+- name: Install plasma-network manager
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - plasma-nm
+    state: present
+
+- name: Install print manager
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - print-manager
+      - system-config-printer
+    state: present
+
+- name: Install systemsettings
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - systemsettings
+      - packagekit-qt5
+      - packagekit-qt6
+      - gnome-settings-daemon
+      - gsettings-desktop-schemas
+      - gsettings-qt
+    state: present

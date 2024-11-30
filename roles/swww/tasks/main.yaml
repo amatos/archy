@@ -1,0 +1,7 @@
+---
+- name: Install swww
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: swww
+    state: present

@@ -1,0 +1,8 @@
+---
+- name: Install clipse
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: clipse
+    use: yay
+    state: present

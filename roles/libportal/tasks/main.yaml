@@ -1,0 +1,13 @@
+---
+- name: Install libportal
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - libportal
+      - libportal-docs
+      - libportal-gtk3
+      - libportal-gtk4
+      - libportal-qt5
+      - libportal-qt6
+    state: present

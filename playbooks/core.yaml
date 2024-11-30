@@ -1,0 +1,30 @@
+---
+- name: Core
+  hosts: all
+  become: true
+  become_user: root
+  roles:
+    - { role: hostname, tags: ["hostname"] }
+    - { role: locale, tags: ["locale"] }
+    - { role: aur_builder, tags: ["aur_builder"] }
+    - { role: reflector, tags: ["reflector"] }
+    - { role: pacman, tags: ["pacman"] }
+    - { role: makepkg, tags: ["makepkg"] }
+    - { role: core_packages, tags: ["core_packages"] }
+    - { role: microcodes, tags: ["microcodes"] }
+    - { role: userconf, tags: ["userconf"] }
+    - { role: ntp, tags: ["ntp"] }
+    - { role: kernel, tags: ["kernel"] }
+    - { role: uki, tags: ["uki"] }
+    - { role: sudo, tags: ["sudo"] }
+    - { role: networkmanager, tags: ["networkmanager"] }
+    - { role: avahi, tags: ["avahi"] }
+    - { role: cockpit, tags: ["cockpit"] }
+    - { role: openssh_server, tags: ["openssh_server"] }
+    - { role: mkinitcpio, tags: ["mkinitcpio"] }
+    - { role: refind, tags: ["refind"] }
+    - { role: paccache, tags: ["paccache"] }
+    - { role: hardening, tags: ["hardening"] }
+    - { role: remind_passwd }
+  tags:
+    - core

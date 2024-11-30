@@ -1,0 +1,24 @@
+---
+- name: Install nautilus
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - nautilus
+      - nautilus-share
+      - nautilus-python
+      - nautilus-image-converter
+      - libnautilus-extension
+      - seahorse-nautilus
+      - nautilus-image-converter
+    state: present
+
+- name: Install Nautilus addons
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - nautilus-admin-gtk4
+      - nautilus-open-any-terminal
+    use: yay
+    state: present

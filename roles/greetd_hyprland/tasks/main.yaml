@@ -1,0 +1,16 @@
+---
+- name: Deploy greetd config.toml
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: config.toml
+    dest: /etc/greetd/config.toml
+    mode: "0644"
+
+- name: Deploy greetd hyprland.conf
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: hyprland.conf
+    dest: /etc/greetd/hyprland.conf
+    mode: "0644"

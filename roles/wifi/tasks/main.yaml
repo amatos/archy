@@ -1,0 +1,9 @@
+---
+- name: Install WiFi tooling
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - wpa_supplicant
+      - iwd
+    state: present

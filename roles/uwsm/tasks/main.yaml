@@ -1,0 +1,8 @@
+- name: Install uwsm
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - uwsm
+    use: yay
+    state: present

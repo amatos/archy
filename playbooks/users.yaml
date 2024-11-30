@@ -1,0 +1,9 @@
+---
+- name: Create User
+  hosts: all
+  become: true
+  become_user: root
+  roles:
+    - { role: create_user, tags: ["create_user"] }
+  tags:
+    - create_user

@@ -1,0 +1,24 @@
+- name: Install AMDGPU graphics libraries and drivers
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - libva-mesa-driver
+      - mesa
+      - mesa-vdpau
+      - vulkan-radeon
+      - lib32-mesa
+      - lib32-mesa-vdpau
+      - lib32-libva-mesa-driver
+      - lib32-vulkan-radeon
+    state: present
+
+- name: Install Additional tools from aur
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - amdgpu_top
+      - rocm-smi-lib
+    use: yay
+    state: present

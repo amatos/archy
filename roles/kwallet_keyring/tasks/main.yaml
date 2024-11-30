@@ -1,0 +1,78 @@
+---
+- name: Install kwallet
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - kwallet
+      - libsecret
+
+- name: Create ~/.local/share/dbus-1/services/ directory
+  become: true
+  become_user: "{{ user.name }}"
+  ansible.builtin.file:
+    path: ~/.local/share/dbus-1/services/
+    state: directory
+    mode: '0755'
+  register: d_bus_servicesd
+
+- name: Configure automatic D-Bus activation
+  become: true
+  become_user: "{{ user.name }}"
+  ansible.builtin.blockinfile:
+    path: ~/.local/share/dbus-1/services/org.freedesktop.secrets.service
+    append_newline: true
+    create: true
+    block: |
+          [D-BUS Service]
+          Name=org.freedesktop.secrets
+          Exec=/usr/bin/kwalletd6
+  when: d_bus_servicesd
+
+- name: Configure PAM auth
+  become: true
+  become_user: root
+  community.general.pamd:
+    name: login
+    type: auth
+    control: include
+    module_path: system-local-login
+    new_type: auth
+    new_control: optional
+    new_module_path: pam_kwallet5.so
+    state: after
+
+- name: Configure PAM session
+  become: true
+  become_user: root
+  community.general.pamd:
+    name: login
+    type: session
+    control: include
+    module_path: system-local-login
+    new_type: session
+    new_control: optional
+    new_module_path: pam_kwallet5.so
+    module_arguments: 'auto_start force_run'
+    state: after
+
+- name: Configure PAM automatic user password sync
+  become: true
+  become_user: root
+  community.general.pamd:
+    name: passwd
+    type: password
+    control: include
+    module_path: system-auth
+    new_type: password
+    new_control: optional
+    new_module_path: pam_gnome_keyring.so
+    state: after
+
+- name: Make XDG Portal work in Hyprland and Sway
+  become: true
+  become_user: root
+  ansible.builtin.lineinfile:
+    path: /usr/share/xdg-desktop-portal/portals/kwallet.portal
+    regexp: '^UseIn='
+    line: UseIn=kde;hyprland;sway

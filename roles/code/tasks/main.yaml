@@ -1,0 +1,24 @@
+---
+# - name: Install code (Open Source VSCode)
+#   become: true
+#   become_user: root
+#   community.general.pacman:
+#     name:
+#       - code
+#     state: present
+
+# - name: Install code-marketplace
+#   become: true
+#   become_user: "{{ aur_builder_user }}"
+#   kewlfft.aur.aur:
+#     name: code-marketplace
+#     use: yay
+#     state: present
+
+- name: Install visual-studio-code from Aur
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: visual-studio-code-bin
+    use: yay
+    state: present

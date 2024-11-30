@@ -1,0 +1,8 @@
+- name: Install Zen browser
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - zen-browser-avx2-bin
+    use: yay
+    state: present

@@ -1,0 +1,9 @@
+- name: Install kdevelop
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - kdevelop
+      - kdevelop-php
+      - kdevelop-python
+    state: present

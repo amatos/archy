@@ -1,0 +1,15 @@
+---
+- name: Install Discord
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - discord
+
+- name: Template the desktop file
+  become: true
+  become_user: root
+  ansible.builtin.template:
+    src: discord-wayland.desktop
+    dest: /usr/share/applications/discord-wayland.desktop
+    mode: 0644

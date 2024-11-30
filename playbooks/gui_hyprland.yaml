@@ -1,0 +1,9 @@
+---
+- name: Install Hyprland
+  hosts: all
+  become: true
+  become_user: root
+  roles:
+    - { role: hyprland, tags: ["hyprland"] }
+  tags:
+    - hyprland

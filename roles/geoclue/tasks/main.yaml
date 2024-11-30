@@ -1,0 +1,7 @@
+---
+- name: Install geoclue
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: geoclue
+    state: present

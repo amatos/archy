@@ -1,0 +1,123 @@
+---
+- name: Install bat
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - bat
+    state: present
+
+- name: Install eza
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - eza
+    state: present
+
+- name: Install lsd
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - lsd
+    state: present
+
+- name: Install btop
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - btop
+    state: present
+
+- name: Install tealdeer
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - tealdeer
+    state: present
+  notify: Run Tealdeer update
+
+- name: Install starship
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - starship
+    state: present
+
+- name: Install Fuzzy Finder (fzf)
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - fzf
+    state: present
+
+- name: Install shellcheck
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - shellcheck
+    state: present
+
+- name: Install wget
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - wget
+    state: present
+
+- name: Install curl
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - curl
+    state: present
+
+- name: Install trash-cli
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - trash-cli
+    state: present
+
+- name: Install smile
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: smile
+    use: yay
+    state: present
+
+- name: Install bc
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - bc
+    state: present
+
+- name: Install fortune/cowsay/lolcat
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - fortune-mod
+      - cowsay
+      - lolcat
+    state: present
+
+- name: Install inetutils
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - inetutils
+    state: present

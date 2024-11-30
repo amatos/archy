@@ -1,0 +1,8 @@
+---
+- name: Install slurp
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - slurp
+    state: present

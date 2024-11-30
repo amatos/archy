@@ -1,0 +1,11 @@
+- name: Install kde-accessibility
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - accessibility-inspector
+      - kmag
+      - kmousetool
+      - kmouth
+      - kontrast
+    state: present

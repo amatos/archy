@@ -1,0 +1,21 @@
+---
+- name: Install sudo
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: sudo
+    state: present
+
+- name: Create "wheel" sudoers file in /etc/sudoers.d
+  become: true
+  become_user: root
+  ansible.builtin.blockinfile:
+    append_newline: true
+    create: true
+    path: /etc/sudoers.d/wheel
+    block: |
+      ## Uncomment to allow members of group wheel to execute any command
+      %wheel ALL=(ALL:ALL) ALL
+
+      ## Same thing without a password
+      %wheel ALL=(ALL:ALL) NOPASSWD: ALL

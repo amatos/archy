@@ -1,0 +1,55 @@
+---
+- name: Remove spotify AUR entries
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - spotify
+      - spotify-wayland
+    state: absent
+
+- name: Install spotify tooling
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - spotify-launcher
+
+- name: Template spotify-launcher config
+  become: true
+  become_user: '{{ user.name }}'
+  ansible.builtin.template:
+    src: spotify-launcher.conf
+    dest: ~/.config/spotify-launcher.conf
+    mode: 0644
+
+- name: Set up spotifyd
+  become: true
+  become_user: '{{ user.name }}'
+  when: spotify_spotifyd_enable
+  block:
+    - name: Install spotifyd
+      become: true
+      become_user: root
+      community.general.pacman:
+        name:
+          - spotifyd
+
+    - name: Ensure directory exists
+      become: true
+      become_user: '{{ user.name }}'
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: 0755
+      loop:
+        - ~/.config/spotifyd
+        - "{{ spotify_spotifyd_cache_path }}"
+
+    - name: Template spotifyd config
+      become: true
+      become_user: '{{ user.name }}'
+      ansible.builtin.template:
+        src: spotifyd.conf
+        dest: ~/.config/spotifyd/spotifyd.conf
+        mode: 0644

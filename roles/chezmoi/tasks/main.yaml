@@ -1,0 +1,15 @@
+---
+- name: Install chezmoi
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: chezmoi
+    state: present
+
+- name: Install chezmoi_modify_manager
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: chezmoi_modify_manager
+    use: yay
+    state: present

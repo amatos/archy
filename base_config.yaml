@@ -1,0 +1,105 @@
+---
+local_machine:
+  hosts:
+    localhost:
+      ansible_connection: local
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+    ##
+    # User configuration
+    # ==================
+    # Pretty self-explanatory.
+    # name: The user id
+    # shell: Name of the desired shell (bash/zsh/fish)
+    #
+    ##
+    user:
+      name: alberth
+      shell: fish
+      generate_ssh_key: false
+      ssh_key_type: ed25519
+      email: alberth@matos.cc
+      gpg_key: F41BDBF6171A3BB4
+      gpg_sign_commits: true
+
+    ##
+    # User ID used for AUR packages
+    # If using KDE, set this to "{{ user.name }}"
+    # Otherwise, leave it as "aur_builder"
+    aur_builder_user: "{{ user.name }}"
+
+    system:
+      hostname: "Necronomicon.home.matos.cc"
+      locale: "en_US.UTF-8"
+      timezone: "America/New_York"
+      graphics_card: "amd"
+      macspoof: false
+      type: ""
+
+    ##
+    # Style for Hyprland apps
+    #
+    # Valid options: "kde" or "gnome"
+    # If left empty, "gnome" will default.
+    hypr_style: "kde"
+
+    ##
+    # Linux Kernel
+    # ============
+    # For details, see https://wiki.archlinux.org/title/Kernel
+    # Kernels:
+    #   Option: "linux" Vanilla Linux kernel and modules, with a few patches applied.
+    #   Option: "linux-hardened" A security-focused Linux kernel
+    #   Option: "linux-zen" The result of a collaborative effort of kernel hackers to provide the best Linux kernel possible for everyday systems.
+    #
+    #   n.b. linux-lts is _always_ installed--unless kernel: "".
+    #
+    # Leave this empty for CachyOS or other systems where you don't want to specify a kernel.
+    ##
+    kernel: "linux-zen"
+
+    # Filesystem crypto settings
+    LUKS:
+      enabled: false
+      cryptdevice_uuid: ""
+      cryptdevice_container: archlvm
+      root: /dev/ArchGroup/root
+      resume: /dev/ArchGroup/swap
+      additional_kernel_params: ""
+
+    # Pacman settings
+    # All false - Don't run the updates by default
+    pacman:
+      update: true
+      upgrade: true
+      multilib: true
+
+    # OpenSSH settings
+    openssh:
+      start: true
+      enable: true
+      xforwarding: false
+
+    # Cockpit
+    cockpit:
+      install: true
+      start: false
+      enable: true
+
+    # NTP
+    ntp:
+      hwclock: UTC
+
+    # Firewall
+    # One of: ufw or firewalld
+    firewall: "firewalld"
+
+    # Bluetooth
+    # install bluez and associated libraries
+    # enabled: enable systemd service on startup
+    bluetooth:
+      enabled: true
+
+    # Install QEMU, libvirt and tools
+    install_virtualization: false

@@ -1,0 +1,24 @@
+---
+- name: Deploy wayland override config
+  ansible.builtin.copy:
+    src: 10-wayland.conf
+    dest: /etc/sddm.conf.d/10-wayland.conf
+    mode: "0644"
+
+- name: Deploy Hyprland compositor config
+  ansible.builtin.copy:
+    src: hyprland.conf
+    dest: /etc/sddm.conf.d/hyprland.conf
+    mode: "0644"
+
+- name: Deploy virtual keyboard config
+  ansible.builtin.copy:
+    src: 30-virtual_keyboard.conf
+    dest: /etc/sddm.conf.d/30-virtual_keyboard.conf
+    mode: "0644"
+
+- name: Deploy SDDM base theme config
+  ansible.builtin.copy:
+    src: sddm-base.conf
+    dest: /etc/sddm.conf.d/25-base-theme.conf
+    mode: "0644"

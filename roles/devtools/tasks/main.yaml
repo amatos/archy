@@ -1,0 +1,70 @@
+---
+- name: Deploy cmake
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: cmake
+    state: present
+
+- name: Deploy meson
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: meson
+    state: present
+
+- name: Deploy cpio
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: cpio
+    state: present
+
+- name: Deploy ninja
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: ninja
+    state: present
+
+- name: Deploy gdb
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: gdb
+    state: present
+
+- name: Deploy lldb
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: lldb
+    state: present
+
+- name: Deploy llvm
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: llvm
+    state: present
+
+- name: Deploy Typescript Language Server
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: typescript-language-server
+    state: present
+
+- name: Deploy pyright
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: pyright
+    state: present
+
+- name: Deploy eslint
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: eslint
+    state: present

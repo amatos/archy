@@ -1,0 +1,24 @@
+---
+- name: Disable gdm
+  ansible.builtin.systemd_service:
+    name: "gdm"
+    enabled: false
+  ignore_errors: yes
+
+- name: Disable greetd
+  ansible.builtin.systemd_service:
+    name: "greetd"
+    enabled: false
+  ignore_errors: yes
+
+- name: Disable sddm
+  ansible.builtin.systemd_service:
+    name: "sddm"
+    enabled: false
+  ignore_errors: yes
+
+- name: Disable cosmic-greeter
+  ansible.builtin.systemd_service:
+    name: "cosmic-greeter"
+    enabled: false
+  ignore_errors: yes

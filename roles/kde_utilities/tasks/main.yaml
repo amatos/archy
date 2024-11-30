@@ -1,0 +1,37 @@
+- name: Install kde-utilities
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - ark
+      - filelight
+      - francis
+      - isoimagewriter
+      - kalk
+      - kalm
+      - kate
+      - kbackup
+      - kcalc
+      - kcharselect
+      - kclock
+      - kdebugsettings
+      - kdf
+      - kdialog
+      - keditbookmarks
+      - keysmith
+      - kfind
+      - kgpg
+      - kongress
+      - konsole
+      - krecorder
+      - kteatime
+      - ktimer
+      - ktrip
+      - kwalletmanager
+      - kweather
+      - markdownpart
+      - skanpage
+      - sweeper
+      - telly-skout
+      - yakuake
+    state: present

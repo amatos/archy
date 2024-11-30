@@ -1,0 +1,12 @@
+---
+dependencies:
+  - role: greeters_disable
+  - role: gui_packages
+  - role: clipse
+  - role: firefox
+  - role: flameshot
+  - role: kitty
+  - role: mpv
+  - role: pipewire
+  - role: qt6_multimedia
+  - role: qt_wayland

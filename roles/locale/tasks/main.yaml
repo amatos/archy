@@ -1,0 +1,54 @@
+---
+- name: Set timezone to system.timezone
+  become: true
+  become_user: root
+  community.general.timezone: name={{ system.timezone }}
+
+- name: Create symlink to zoneinfo file
+  become: true
+  become_user: root
+  ansible.builtin.file:
+    src: '/usr/share/zoneinfo/{{ system.timezone }}'
+    dest: /etc/localtime
+    state: link
+
+- name: Ensure the locale system.locale exists
+  become: true
+  become_user: root
+  community.general.locale_gen: name={{ system.locale }} state=present
+
+- name: update /etc/vconsole.conf
+  become: true
+  become_user: root
+  ansible.builtin.blockinfile:
+      path: /etc/vconsole.conf
+      append_newline: true
+      create: true
+      block: |
+          KEYMAP=us
+
+- name: Update /etc/locale.conf
+  become: true
+  become_user: root
+  ansible.builtin.blockinfile:
+      path: /etc/locale.conf
+      append_newline: true
+      create: true
+      block: |
+          LANG={{ system.locale }}
+
+- name: Update /etc/locale.gen
+  become: true
+  become_user: root
+  ansible.builtin.lineinfile:
+      path: /etc/locale.gen
+      state: present
+      regexp: "^#en_US.UTF-8 UTF-8"
+      line: "en_US.UTF-8 UTF-8"
+  register: updated_locale
+
+- name: Run locale-gen
+  become: true
+  become_user: root
+  ansible.builtin.command: "/usr/bin/locale-gen"
+  when: updated_locale

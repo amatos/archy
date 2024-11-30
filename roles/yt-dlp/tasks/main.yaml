@@ -1,0 +1,33 @@
+---
+- name: Install yt-dlp
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - yt-dlp
+
+- name: Install yt-dlp dependencies
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - ffmpeg
+      - rtmpdump
+      - atomicparsley
+      - aria2
+      - python-mutagen
+      - python-pycryptodome
+      - python-pycryptodomex
+      - python-websockets
+      - python-brotli
+      - python-brotlicffi
+      - python-xattr
+      - python-secretstorage
+
+- name: Install phantomjs
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: phantomjs-git
+    use: yay
+    state: present

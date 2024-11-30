@@ -1,0 +1,8 @@
+---
+- name: Install gnome-calculator
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - gnome-calculator
+    state: present

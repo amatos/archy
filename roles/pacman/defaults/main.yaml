@@ -1,0 +1,6 @@
+---
+pacman:
+  update: false
+  upgrade: false
+  multilib: false
+  parallel_downloads_number: 5

@@ -1,0 +1,10 @@
+---
+- name: Install appindicator libraries
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - libayatana-appindicator
+      - libappindicator-gtk3
+      - libappindicator-gtk2
+    state: present

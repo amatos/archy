@@ -1,0 +1,39 @@
+- name: Install linux kernel and headers
+  community.general.pacman:
+    name:
+      - linux
+      - linux-headers
+    state: present
+  when: kernel == "linux"
+  notify:
+    - Regenerate initramfs
+
+- name: Install linux-hardened and hardened headers
+  community.general.pacman:
+    name:
+      - linux-hardened
+      - linux-hardened-headers
+    state: present
+  when: kernel == "linux-hardened"
+  notify:
+    - Regenerate initramfs
+
+- name: Install linux-zen and zen headers
+  community.general.pacman:
+    name:
+      - linux-zen
+      - linux-zen-headers
+    state: present
+  when: kernel == "linux-zen"
+  notify:
+    - Regenerate initramfs
+
+- name: Install linux-lts and lts headers
+  community.general.pacman:
+    name:
+      - linux-lts
+      - linux-lts-headers
+    state: present
+  when: not kernel == ""
+  notify:
+    - Regenerate initramfs

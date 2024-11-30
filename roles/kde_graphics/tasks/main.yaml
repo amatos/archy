@@ -1,0 +1,21 @@
+- name: Install kde-graphics
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - arianna
+      - colord-kde
+      - gwenview
+      - kamera
+      - kcolorchooser
+      - kdegraphics-thumbnailers
+      - kgraphviewer
+      - kimagemapeditor
+      - koko
+      - kolourpaint
+      - kruler
+      - okular
+      - skanlite
+      - spectacle
+      - svgpart
+    state: present

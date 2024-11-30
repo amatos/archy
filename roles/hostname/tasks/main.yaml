@@ -1,0 +1,13 @@
+---
+- name: Sanity check hostname
+  when: not system.hostname
+  ansible.builtin.fail:
+    msg: "Hostname has not been set."
+    
+- name: Create hostname file
+  become: true
+  become_user: root
+  ansible.builtin.lineinfile:
+    path: /etc/hostname
+    line: "{{ system.hostname }}"
+    create: yes

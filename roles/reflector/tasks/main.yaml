@@ -1,0 +1,49 @@
+- name: Install reflector
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: reflector
+    state: present
+  register: reflector_installed
+
+- name: Update reflector.conf -- comment out original latest
+  become: true
+  become_user: root
+  ansible.builtin.replace:
+    path: /etc/xdg/reflector/reflector.conf
+    regexp: '--latest 5'
+    replace: '# --latest 5'
+  register: commented_out
+  when: reflector_installed
+
+- name: Update reflector.conf -- insert my changes
+  become: true
+  become_user: root
+  ansible.builtin.blockinfile:
+    path: /etc/xdg/reflector/reflector.conf
+    append_newline: true
+    prepend_newline: true
+    insertafter: "EOF"
+    marker: "# {mark} reflector ANSIBLE MANAGED BLOCK"
+    block: |
+      --latest 100
+      --country us,ca
+  register: inserted_changes
+
+- name: Run reflector to update mirror list
+  become: true
+  become_user: root
+  ansible.builtin.service:
+    name: reflector
+    state: started
+  when:
+    - commented_out
+    - inserted_changes
+
+- name: Enable a sytemd timer unit for reflector to run periodically
+  become: true
+  become_user: root
+  ansible.builtin.systemd_service:
+    name: reflector.timer
+    state: started
+    enabled: true

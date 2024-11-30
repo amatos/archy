@@ -1,0 +1,39 @@
+---
+- name: Install wayland
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - wayland
+      - qt6-wayland
+      - qt5-wayland
+      # For pinentry-qt
+      - kwayland
+      - kwayland5
+      - kwindowsystem
+      - kguiaddons
+
+- name: Enable wayland for Electron (system) apps
+  become: true
+  become_user: '{{ user.name }}'
+  ansible.builtin.copy:
+    src: electron25-flags.conf
+    dest: ~/.config/electron{{ item }}-flags.conf
+    mode: 0644
+  loop:
+    - 28
+    - 27
+    - 26
+    - 25
+    - 24
+    - 23
+    - 22
+    - 21
+    - 20
+
+- name: Template fish plugin
+  ansible.builtin.include_role:
+    name: helper_fish_plugin
+  vars:
+    helper_fish_plugin_directory_name: wayland
+    helper_fish_plugin_template_name: env.fish

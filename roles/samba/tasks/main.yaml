@@ -1,0 +1,56 @@
+---
+- name: Deploy samba packages
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - samba
+    state: present
+
+- name: Create /etc/samba directory
+  become: true
+  become_user: root
+  ansible.builtin.file:
+    path: /etc/samba
+    state: directory
+    mode: "0755"
+  register: created_etc_samba
+
+- name: Deploy smb.conf
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: smb.conf
+    dest: /etc/samba/smb.conf
+    mode: "0644"
+  when: created_etc_samba
+
+- name: Ensure sambashare group
+  ansible.builtin.group:
+    name: sambashare
+    state: present
+
+
+- name: Add user.name to sambashare group
+  ansible.builtin.user:
+    name: '{{ user.name }}'
+    groups: sambashare
+    append: yes
+
+- name: Create usershare directory
+  become: true
+  become_user: root
+  ansible.builtin.file:
+    path: /var/lib/samba/usershares
+    state: directory
+    owner: root
+    group: sambashare
+    mode: '1770'
+
+- name: Enable and start smb service
+  become: true
+  become_user: root
+  ansible.builtin.service:
+    name: smb.service
+    enabled: true
+    state: started

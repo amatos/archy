@@ -1,0 +1,22 @@
+# vim:set ft=sh
+{% if system.graphics_card == 'nvidia' %}
+MODULES=({{ initrd_mods }} nvidia nvidia_modeset nvidia_uvm nvidia_drm usbhid xhci_hcd)
+{% elif system.graphics_card == 'i915' %}
+MODULES=({{ initrd_mods }} i915 usbhid xhci_hcd)
+{% elif system.graphics_card == 'amd' %}
+MODULES=({{ initrd_mods }} amdgpu radeon usbhid xhci_hcd)
+{% endif %}
+
+BINARIES=({{ initrd_bin }})
+
+FILES=({{ initrd_files }})
+
+HOOKS=({{ initrd_hooks_pre }} plymouth {{ initrd_hooks_post }})
+
+HOOKS=({{ initrd_hooks_pre }} {{ initrd_hooks_post }})
+
+COMPRESSION="{{ initrd_compression }}"
+
+COMPRESSION_OPTIONS="{{ initrd_compression_options }}"
+
+MODULES_DECOMPRESS="no"

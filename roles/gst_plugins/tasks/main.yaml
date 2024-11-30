@@ -1,0 +1,32 @@
+---
+- name: Install gst-libav
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: gst-libav
+    use: yay
+    state: present
+
+- name: Install gst-plugins-good
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: gst-plugins-good
+    use: yay
+    state: present
+
+- name: Install gst-plugins-bad
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: gst-plugins-bad
+    use: yay
+    state: present
+
+- name: Install gst-plugins-ugly
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: gst-plugins-ugly
+    use: yay
+    state: present
