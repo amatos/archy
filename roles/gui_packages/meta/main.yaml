@@ -27,3 +27,4 @@ dependencies:
   - role: winbox
   - role: yubikey
   - role: zen_browser
+  - role: xwaylandvideobridge
