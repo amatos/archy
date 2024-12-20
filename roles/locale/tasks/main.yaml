@@ -26,6 +26,7 @@
       create: true
       block: |
           KEYMAP=us
+    mode: '0644'
 
 - name: Update /etc/locale.conf
   become: true

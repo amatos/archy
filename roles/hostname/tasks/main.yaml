@@ -11,3 +11,4 @@
     path: /etc/hostname
     line: "{{ system.hostname }}"
     create: yes
+    mode: '0644'

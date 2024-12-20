@@ -13,6 +13,7 @@
   ansible.builtin.copy:
     src: 1-disable_mdns.conf
     dest: /etc/systemd/resolved.conf.d/
+    mode: "0644"
   notify:
     - Restart resolved
   register: no_resolvedmdns

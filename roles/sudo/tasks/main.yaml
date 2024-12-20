@@ -19,3 +19,4 @@
 
       ## Same thing without a password
       %wheel ALL=(ALL:ALL) NOPASSWD: ALL
+    mode: '0640'

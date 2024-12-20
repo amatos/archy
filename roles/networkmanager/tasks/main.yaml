@@ -31,6 +31,7 @@
   ansible.builtin.copy:
     src: 10-stub-dns.conf
     dest: /etc/systemd/resolved.conf.d/
+    mode: '0644'
   notify:
     - Restart resolved
 
