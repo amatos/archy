@@ -1,3 +1,4 @@
+---
 - name: Install kde-accessibility
   become: true
   become_user: root

@@ -1,3 +1,4 @@
+---
 - name: Install Zen browser
   become: true
   become_user: "{{ aur_builder_user }}"

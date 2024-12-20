@@ -1,3 +1,4 @@
+---
 - name: Install TeXLive
   become: true
   become_user: root
@@ -12,19 +13,19 @@
     name: "{{ item }}"
     state: present
   with_items:
-      - biber
-      - dialog
-      - ed
-      - luametatex
-      - perl-file-homedir
-      - perl-ipc-system-simple
-      - perl-tk
-      - perl-yaml-tiny
-      - python
-      - python-pygments
-      - texlive-fontsextra
-      - texlive-fontsrecommended
-      - texlive-lang
-      - texlive-latexextra
-      - texlive-latexrecommended
-      - wdiff
+    - biber
+    - dialog
+    - ed
+    - luametatex
+    - perl-file-homedir
+    - perl-ipc-system-simple
+    - perl-tk
+    - perl-yaml-tiny
+    - python
+    - python-pygments
+    - texlive-fontsextra
+    - texlive-fontsrecommended
+    - texlive-lang
+    - texlive-latexextra
+    - texlive-latexrecommended
+    - wdiff

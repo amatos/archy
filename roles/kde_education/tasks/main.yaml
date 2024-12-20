@@ -1,3 +1,4 @@
+---
 - name: Install kde-education
   become: true
   become_user: root

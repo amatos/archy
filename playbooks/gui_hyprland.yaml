@@ -4,6 +4,6 @@
   become: true
   become_user: root
   roles:
-    - { role: hyprland, tags: ["hyprland"] }
+    - {role: hyprland, tags: ["hyprland"]}
   tags:
     - hyprland

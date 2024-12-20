@@ -54,7 +54,6 @@
     use: yay
     state: present
 
-  
 - name: Install Python modules
   become: true
   become_user: root

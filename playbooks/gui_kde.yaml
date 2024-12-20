@@ -4,6 +4,6 @@
   become: true
   become_user: root
   roles:
-    - { role: plasma_desktop, tags: ["plasma_desktop"] }
+    - {role: plasma_desktop, tags: ["plasma_desktop"]}
   tags:
     - kde

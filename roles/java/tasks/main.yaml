@@ -1,8 +1,9 @@
+---
 - name: Install Java openjdk
   become: true
   become_user: root
   community.general.pacman:
-    name: 
+    name:
       - jdk-openjdk
       - openjdk-doc
       - maven
@@ -12,7 +13,7 @@
   become: true
   become_user: root
   community.general.pacman:
-    name: 
+    name:
       - java-runtime
     state: present
 
@@ -20,6 +21,6 @@
   become: true
   become_user: root
   community.general.pacman:
-    name: 
+    name:
       - java-rhino
     state: present

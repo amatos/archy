@@ -1,3 +1,4 @@
+---
 - name: Install kde-sdk
   become: true
   become_user: root

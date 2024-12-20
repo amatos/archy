@@ -1,3 +1,4 @@
+---
 - name: Install Yubikey Items
   become: true
   become_user: root

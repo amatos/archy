@@ -1,3 +1,4 @@
+---
 - name: Install makepkg dropin packages
   become: true
   become_user: root

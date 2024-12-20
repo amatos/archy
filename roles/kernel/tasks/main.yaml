@@ -1,3 +1,4 @@
+---
 - name: Install linux kernel and headers
   community.general.pacman:
     name:

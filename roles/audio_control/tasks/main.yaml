@@ -1,3 +1,4 @@
+---
 - name: Install pamixer
   become: true
   become_user: root

@@ -26,7 +26,7 @@
     state: directory
     mode: '0755'
   register: psd_dir_created
-  
+
 - name: Copy profile-sync-daemon config file
   become: true
   become_user: '{{ user.name }}'

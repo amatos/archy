@@ -4,31 +4,31 @@
   become: true
   become_user: root
   roles:
-    - { role: hyprland, tags: ["hyprland"] }
-    - { role: fonts, tags: ["fonts"] }
-    - { role: 1password, tags: ["1password"] }
-    - { role: audio_control, tags: ["audio_control"] }
-    - { role: darkman, tags: ["darkman"] }
-    - { role: discord, tags: ["discord"] }
-    - { role: firefox, tags: ["firefox"] }
-    - { role: zen_browser, tags: ["zen_browser"] }
-    - { role: gimp, tags: ["gimp"] }
-    - { role: libreoffice, tags: ["libreoffice"] }
-    - { role: neovide, tags: ["neovide"] }
-    - { role: partitionmanager, tags: ["partitionmanager"] }
-    - { role: slack, tags: ["slack"] }
-    - { role: spotify, tags: ["spotify"] }
-    - { role: sublime_text, tags: ["sublime_text"] }
-    - { role: TeXlive, tags: ["TeXlive"] }
-    - { role: thunderbird, tags: ["thunderbird"] }
-    - { role: variety, tags: ["variety"] }
-    - { role: vlc, tags: ["vlc"] }
-    - { role: wayprompt, tags: ["wayprompt"] }
-    - { role: wayvnc, tags: ["wayvnc"] }
-    - { role: yubikey, tags: ["yubikey"] }
-    - { role: gui_packages, tags: ["gui_packages"] }
-    - { role: winbox, tags: ["winbox"] }
-    - { role: obsidian, tags: ["obsidian"] }
-    - { role: bottles, tags: ["bottles"] }
+    - {role: hyprland, tags: ["hyprland"]}
+    - {role: fonts, tags: ["fonts"]}
+    - {role: 1password, tags: ["1password"]}
+    - {role: audio_control, tags: ["audio_control"]}
+    - {role: darkman, tags: ["darkman"]}
+    - {role: discord, tags: ["discord"]}
+    - {role: firefox, tags: ["firefox"]}
+    - {role: zen_browser, tags: ["zen_browser"]}
+    - {role: gimp, tags: ["gimp"]}
+    - {role: libreoffice, tags: ["libreoffice"]}
+    - {role: neovide, tags: ["neovide"]}
+    - {role: partitionmanager, tags: ["partitionmanager"]}
+    - {role: slack, tags: ["slack"]}
+    - {role: spotify, tags: ["spotify"]}
+    - {role: sublime_text, tags: ["sublime_text"]}
+    - {role: TeXlive, tags: ["TeXlive"]}
+    - {role: thunderbird, tags: ["thunderbird"]}
+    - {role: variety, tags: ["variety"]}
+    - {role: vlc, tags: ["vlc"]}
+    - {role: wayprompt, tags: ["wayprompt"]}
+    - {role: wayvnc, tags: ["wayvnc"]}
+    - {role: yubikey, tags: ["yubikey"]}
+    - {role: gui_packages, tags: ["gui_packages"]}
+    - {role: winbox, tags: ["winbox"]}
+    - {role: obsidian, tags: ["obsidian"]}
+    - {role: bottles, tags: ["bottles"]}
   tags:
     - gui

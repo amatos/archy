@@ -3,7 +3,7 @@
   become: true
   become_user: root
   community.general.pacman:
-    name: 
+    name:
       - sushi
       - webkit2gtk-4.1
     state: present

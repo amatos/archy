@@ -1,3 +1,4 @@
+---
 common_boot:
   - zswap.enabled=0
   - nowatchdog

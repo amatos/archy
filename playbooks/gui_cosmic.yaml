@@ -4,6 +4,6 @@
   become: true
   become_user: root
   roles:
-    - { role: cosmic, tags: ["cosmic"] }
+    - {role: cosmic, tags: ["cosmic"]}
   tags:
     - cosmic
