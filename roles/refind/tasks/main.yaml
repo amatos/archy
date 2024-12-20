@@ -83,7 +83,7 @@
   when: created_pacmand_hooks_dir
 
 - name: Change timeout to 3 seconds
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /efi/EFI/refind/refind.conf
     regexp: '^timeout 20'
     line: 'timeout 3'

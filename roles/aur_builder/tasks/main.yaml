@@ -2,10 +2,10 @@
 - name: Check if aur_builder
   become: true
   become_user: root
-  getent:
+  ansible.builtin.getent:
     database: passwd
     key: "{{ aur_builder_user }}"
-  ignore_errors: yes
+  ignore_errors: true
   register: aur_builder_user_exists
 
 - name: Create aur_builder user
