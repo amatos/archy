@@ -24,10 +24,11 @@
       - python-xattr
       - python-secretstorage
 
-- name: Install phantomjs
-  become: true
-  become_user: "{{ aur_builder_user }}"
-  kewlfft.aur.aur:
-    name: phantomjs-git
-    use: yay
-    state: present
+# - name: Install phantomjs
+#   become: true
+#   become_user: "{{ aur_builder_user }}"
+#   kewlfft.aur.aur:
+#     name:
+#       - phantomjs-git
+#     use: yay
+#     state: present
