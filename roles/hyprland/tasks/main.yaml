@@ -4,20 +4,22 @@
   become_user: "{{ aur_builder_user }}"
   kewlfft.aur.aur:
     name:
-      - xdg-desktop-portal-hyprland-git
+      - aquamarine-git
+      - hyprcursor-git
+      - hyprgraphics-git
+      - hypridle-git
+      - hyprland-git
+      - hyprland-protocols-git
+      - hyprlang-git
+      - hyprlock-git
       - hyprpaper-git
       - hyprpicker-git
-      - hypridle-git
-      - hyprlock-git
-      - hyprcursor-git
-      - hyprsunset-git
       - hyprpolkitagent-git
+      - hyprsunset-git
       - hyprsysteminfo-git
       - hyprutils-git
-      - hyprlang-git
       - hyprwayland-scanner-git
-      - aquamarine-git
-      - hyprland-git
+      - xdg-desktop-portal-hyprland-git
     use: yay
     state: present
 
@@ -37,7 +39,7 @@
   ansible.builtin.file:
     path: ~/.config/xdg-desktop-portal/
     state: directory
-    mode: '0755'
+    mode: "0755"
   register: xdg_portald
 
 - name: Configure automatic D-Bus activation
@@ -48,9 +50,11 @@
     append_newline: true
     create: true
     block: |
-        [preferred]
-        default=hyprland;kde;gtk
-        org.freedesktop.impl.portal.FileChooser=kde
+      [preferred]
+      default=hyprland;kde;gtk
+      org.freedesktop.impl.portal.FileChooser=kde
+      org.freedesktop.impl.portal.Settings=darkman
+    mode: '0644'
   when: xdg_portald
 
 - name: Install hyprgui
@@ -76,25 +80,32 @@
 
 - name: Add Hyprland official plugins
   become: true
-  become_user: '{{ user.name }}'
-  ansible.builtin.command: 'hyprpm add https://github.com/hyprwm/hyprland-plugins'
+  become_user: "{{ user.name }}"
+  ansible.builtin.command: "hyprpm add https://github.com/hyprwm/hyprland-plugins"
   register: hyprland_official_plugins_installed
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Add shezdy/hyprsplit plugin
   become: true
-  become_user: '{{ user.name }}'
-  ansible.builtin.command: 'hyprpm add https://github.com/shezdy/hyprsplit'
+  become_user: "{{ user.name }}"
+  ansible.builtin.command: "hyprpm add https://github.com/shezdy/hyprsplit"
   register: hyprsplit_installed
-  ignore_errors: yes
+  ignore_errors: true
+
+- name: Add KZDKM/Hyprspace plugin
+  become: true
+  become_user: "{{ user.name }}"
+  ansible.builtin.command: "hyprpm add https://github.com/KZDKM/Hyprspace"
+  register: hyprspace_installed
+  ignore_errors: true
 
 - name: Enable hyprexpo plugin
   become: true
-  become_user: '{{ user.name }}'
-  ansible.builtin.command: 'hyprpm enable hyprexpo'
+  become_user: "{{ user.name }}"
+  ansible.builtin.command: "hyprpm enable hyprexpo"
   when: hyprland_official_plugins_installed
   notify: Run hyprpm update
-  ignore_errors: yes
+  ignore_errors: true
 
 # - name: Enable hyprbars plugin
 #   become: true
@@ -106,8 +117,8 @@
 
 - name: Enable hyprsplit plugin
   become: true
-  become_user: '{{ user.name }}'
-  ansible.builtin.command: 'hyprpm enable hyprsplit'
+  become_user: "{{ user.name }}"
+  ansible.builtin.command: "hyprpm enable hyprsplit"
   when: hyprsplit_installed
   notify: Run hyprpm update
-  ignore_errors: yes
+  ignore_errors: true
