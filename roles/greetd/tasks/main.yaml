@@ -27,15 +27,6 @@
     mode: "0644"
   when: greetd_configdir
 
-- name: Deploy greetd pam config
-  become: true
-  become_user: root
-  ansible.builtin.copy:
-    src: greetd
-    dest: /etc/pam.d/greetd
-    mode: "0644"
-  when: greetded
-
 - name: Enable greetd greeter
   become: true
   become_user: root
