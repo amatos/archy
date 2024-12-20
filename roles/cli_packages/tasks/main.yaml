@@ -1,4 +1,12 @@
 ---
+- name: Install ansible-lint
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - ansible-lint
+    state: present
+
 - name: Install bat
   become: true
   become_user: root
@@ -120,4 +128,12 @@
   community.general.pacman:
     name:
       - inetutils
+    state: present
+
+- name: Install direnv
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - direnv
     state: present
