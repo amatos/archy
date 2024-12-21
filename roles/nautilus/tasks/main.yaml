@@ -9,7 +9,6 @@
       - nautilus-python
       - nautilus-image-converter
       - libnautilus-extension
-      - seahorse-nautilus
       - nautilus-image-converter
     state: present
 
@@ -22,3 +21,8 @@
       - nautilus-open-any-terminal
     use: yay
     state: present
+
+- name: Set Nautilus as default file manager
+  become: true
+  become_user: root
+  ansible.builtin.command: 'xdg-mime default org.gnome.Nautilus.desktop inode/directory'
