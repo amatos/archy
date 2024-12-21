@@ -1,0 +1,8 @@
+---
+- name: Install subversion
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - subversion
+    state: present
