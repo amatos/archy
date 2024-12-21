@@ -1,0 +1,24 @@
+---
+- name: Install OpenRGB
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - openrgb
+    state: present
+
+- name: Install i2c-tools
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - i2c-tools
+    state: present
+
+- name: Install read-edid
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - read-edid
+    state: present
