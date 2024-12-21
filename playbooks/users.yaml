@@ -1,9 +1,10 @@
 ---
-- name: Create User
+- name: Create Primary (admin-level) User
   hosts: all
   become: true
   become_user: root
   roles:
-    - { role: create_user, tags: ["create_user"] }
+    - {role: create_primary_user, tags: ["admin_user"]}
+    - {role: create_additional_users, tags: ["regular_user"]}
   tags:
     - create_user
