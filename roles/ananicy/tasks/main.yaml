@@ -1,0 +1,29 @@
+---
+- name: Install Ananicy-cpp
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - ananicy-cpp
+    state: present
+  register: ananicy_installed
+
+- name: Install cachyos-ananicy-rules
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: cachyos-ananicy-rules-git
+    use: yay
+    state: present
+  register: ananicy_rules_deployed
+
+- name: Start Ananicy Daemon
+  become: true
+  become_user: root
+  ansible.builtin.service:
+    name: ananicy-cpp
+    state: started
+    enabled: true
+  when:
+    - ananicy_installed
+    - ananicy_rules_deployed
