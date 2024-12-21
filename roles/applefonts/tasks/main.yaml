@@ -1,8 +1,24 @@
 ---
-- name: Install Nerd font patched Apple fonts
+- name: Install Apple fonts
   become: true
   become_user: "{{ aur_builder_user }}"
   kewlfft.aur.aur:
-    name: nerd-fonts-apple
+    name: apple-fonts
+    use: yay
+    state: present
+
+- name: Install older Apple fonts
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: ttf-mac-fonts
+    use: yay
+    state: present
+
+- name: Install Nerd-Font patched SF Mono Apple font
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: nerd-fonts-sf-mono
     use: yay
     state: present
