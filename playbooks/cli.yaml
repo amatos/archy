@@ -5,6 +5,7 @@
   become_user: root
   roles:
     - {role: git, tags: ["git"]}
+    - {role: fish, tags: ["fish"]}
     - {role: gnupg, tags: ["gnupg"]}
     - {role: devtools, tags: ["devtools"]}
     - {role: rust, tags: ["rust"]}

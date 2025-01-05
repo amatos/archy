@@ -1,0 +1,34 @@
+---
+- name: Install fish
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - fish
+    state: present
+
+- name: Install pkgfile
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - pkgfile
+    state: present
+
+
+
+- name: Install fzf
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - fzf
+    state: present
+
+- name: Install find-the-command
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: find-the-command
+    use: yay
+    state: present
