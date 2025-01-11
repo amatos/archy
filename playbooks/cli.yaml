@@ -12,7 +12,6 @@
     - {role: java, tags: ["java"]}
     - {role: pkgfile, tags: ["pkgfile"]}
     - {role: syncthing, tags: ["syncthing"]}
-    - {role: imagemagick, tags: ["imagemagick"]}
     - {role: chezmoi, tags: ["chezmoi"]}
     - {role: cups, tags: ["cups"]}
     - {role: neovim, tags: ["neovim"]}
