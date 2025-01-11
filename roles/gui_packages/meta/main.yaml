@@ -4,7 +4,6 @@ dependencies:
   - role: bottles
   - role: darkman
   - role: firefox
-  - role: flameshot
   - role: fonts
   - role: gimp
   - role: libreoffice
