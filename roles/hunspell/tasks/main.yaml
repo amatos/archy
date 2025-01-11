@@ -1,0 +1,24 @@
+---
+- name: Install hunspell
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - hunspell
+    state: present
+
+- name: Install hunspell American English
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - hunspell-en_US
+    state: present
+
+- name: Install hunspell Brazilian portuguese
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: hunspell-pt-br
+    use: yay
+    state: present

@@ -27,3 +27,4 @@ dependencies:
   - role: zen_browser
   - role: xwaylandvideobridge
   - role: pywal
+  - role: hunspell
