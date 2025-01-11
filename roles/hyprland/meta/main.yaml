@@ -23,7 +23,4 @@ dependencies:
   - role: wlogout
   - role: font_manager
   - role: arch_xdg_menu
-  - role: kde_tools
-    when: hypr_style == "kde"
-  - role: gnome_tools
-    when: hypr_style != "kde"
+  - role: gnome_keyring
