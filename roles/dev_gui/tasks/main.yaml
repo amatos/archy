@@ -1,0 +1,42 @@
+---
+- name: Install visual studio code
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: visual-studio-code-bin
+    use: yay
+    state: present
+
+- name: Install visual studio code optional dependencies
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: icu69-bin
+    use: yay
+    state: present
+
+- name: Install gitkraken
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: gitkraken
+    use: yay
+    state: present
+
+- name: Install meld
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: meld
+    use: yay
+    state: present
+
+- name: Install jetbrains-toolbox
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: jetbrains-toolbox
+    use: yay
+    state: present
+
+/home/alberth/.local/share/JetBrains/Toolbox/apps

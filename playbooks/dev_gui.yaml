@@ -1,0 +1,9 @@
+---
+- name: Install GUI development tools
+  hosts: all
+  become: true
+  become_user: root
+  roles:
+    - {role: dev_gui}
+  tags:
+    - dev_gui

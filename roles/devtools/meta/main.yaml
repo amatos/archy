@@ -1,7 +1,0 @@
----
-dependencies:
-  - role: meld
-  - role: gitkraken
-  - role: pycharm
-  - role: intellij
-  - role: code
