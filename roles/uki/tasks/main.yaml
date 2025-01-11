@@ -35,7 +35,7 @@
     - Regenerate initramfs
 
 - name: Find UEFI partition
-  ansible.builtin.command: 'cat /etc/fstab |grep efi | grep UUID | cut -f 2'
+  ansible.builtin.shell: 'cat /etc/fstab |grep efi | grep UUID | cut -f 2'
   register: uefi_path
 
 - name: Create UEFI/EFI/Linux
