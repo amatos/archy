@@ -25,7 +25,7 @@
   with_items:
     - "{{ ansible_interfaces }}"
   when: ('item.startswith("wl")') or ('item.startswith("enp")')
-  notify: restart FirewallD
+  notify: Restart FirewallD
 
 - name: Change network for interfaces to "Home" (runtime)
   become: true
@@ -37,7 +37,7 @@
   with_items:
     - "{{ ansible_interfaces }}"
   when: ('item.startswith("wl")') or ('item.startswith("enp")')
-  notify: restart FirewallD
+  notify: Restart FirewallD
 
 - name: Updating home zone rules
   become: true
