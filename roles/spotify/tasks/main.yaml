@@ -8,5 +8,6 @@
       - zenity
       - ffmpeg4.4
       - spotifywm-git
+      - pywal-spicetify
     use: yay
     state: present

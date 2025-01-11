@@ -26,3 +26,4 @@ dependencies:
   - role: yubikey
   - role: zen_browser
   - role: xwaylandvideobridge
+  - role: pywal

@@ -1,0 +1,14 @@
+- name: Install pywal
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: 
+      - python-pywal16
+      - colorz
+      - python-fast-colorthief
+      - python-haishoku
+      - python-pywalfox
+      - python-fzf-wal
+      - pywal-discord-git
+    use: yay
+    state: present
