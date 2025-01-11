@@ -27,6 +27,7 @@
     name:
       - gnome-keyring
       - libsecret
+      - seahorse
 
 - name: Configure PAM auth
   become: true
