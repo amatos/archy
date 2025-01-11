@@ -137,3 +137,11 @@
     name:
       - direnv
     state: present
+
+- name: Install jq
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - jq
+    state: present
