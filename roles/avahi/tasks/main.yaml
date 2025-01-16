@@ -7,6 +7,13 @@
     state: present
   register: avahi_installed
 
+- name: Install nss-mdns
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: nss-mdns
+    state: present
+
 - name: Deploy disable_mdns
   become: true
   become_user: root
