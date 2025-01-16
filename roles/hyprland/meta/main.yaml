@@ -24,3 +24,4 @@ dependencies:
   - role: font_manager
   - role: arch_xdg_menu
   - role: gnome_keyring
+  - role: 1password
