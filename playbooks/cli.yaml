@@ -20,5 +20,6 @@
     - {role: neofetch, tags: ["neofetch"]}
     - {role: cli_packages, tags: ["cli_packages"]}
     - {role: firewall, tags: ["firewall"]}
+    - {role: powerprofiles, tags: ["powerprofiles"]}
   tags:
     - cli
