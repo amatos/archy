@@ -19,6 +19,6 @@
     - {role: atuin, tags: ["atuin"]}
     - {role: neofetch, tags: ["neofetch"]}
     - {role: cli_packages, tags: ["cli_packages"]}
-    - {role: firewall, ctags: ["firewall"]}
+    - {role: firewall, tags: ["firewall"]}
   tags:
     - cli
