@@ -3,3 +3,4 @@ dependencies:
   - role: bind
   - role: nmap
   - role: p7zip
+  - role: autotrash

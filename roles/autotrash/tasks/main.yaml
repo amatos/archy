@@ -1,0 +1,9 @@
+---
+- name: Install autotrash
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: autotrash
+    use: yay
+    state: present
+  notify: Install Autotrash Service
