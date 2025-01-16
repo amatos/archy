@@ -4,27 +4,8 @@
   become_user: root
   community.general.pacman:
     name:
-      - cosmic-notifications
-      - cosmic-text-editor
-      - cosmic-wallpapers
-      - cosmic-screenshot
-      - cosmic-settings-daemon
-      - cosmic-launcher
-      - cosmic-settings
-      - cosmic-applets
-      - cosmic-session
-      - cosmic-app-library
-      - cosmic-workspaces
-      - cosmic-files
-      - cosmic-randr
-      - cosmic-terminal
-      - cosmic-panel
-      - cosmic-greeter
-      - cosmic-comp
-      - cosmic-store
-      - cosmic-idle
-      - cosmic-osd
-      - cosmic-bg
+      - cosmic
+      - cosmic-player
     state: present
 
 - name: Install XDG portals
