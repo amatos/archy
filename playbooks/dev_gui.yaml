@@ -4,6 +4,6 @@
   become: true
   become_user: root
   roles:
-    - {role: dev_gui}
+    - { role: dev_gui }
   tags:
     - dev_gui
