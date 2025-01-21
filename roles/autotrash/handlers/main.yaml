@@ -1,3 +1,4 @@
 ---
 - name: Install Autotrash Service
   ansible.builtin.command: "autotrash --install -d 15"
+  when: ( {{ aur_builder_user }} == {{ user.name }} )
