@@ -1,4 +1,12 @@
 ---
+- name: Remove Jack
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - jack2
+    state: absent
+
 - name: Install pipewire
   become: true
   become_user: root
