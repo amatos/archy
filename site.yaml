@@ -29,3 +29,6 @@
 - name: Virtualization
   ansible.builtin.import_playbook: playbooks/virtualization.yaml
   when: install_virtualization
+
+- name: Development GUI tools
+  ansible.builtin.import_playbook: playbooks/dev_gui.yaml
