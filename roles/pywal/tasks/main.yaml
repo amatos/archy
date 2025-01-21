@@ -8,7 +8,6 @@
       - python-fast-colorthief
       - python-haishoku
       - python-pywalfox
-      - python-fzf-wal
       - pywal-discord-git
     use: yay
     state: present
