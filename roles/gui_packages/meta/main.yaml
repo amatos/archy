@@ -6,12 +6,14 @@ dependencies:
   - role: firefox
   - role: fonts
   - role: gimp
+  - role: hunspell
   - role: libreoffice
   - role: mpv
   - role: neovide
   - role: obsidian
   - role: partitionmanager
   - role: pipewire
+  - role: pywal
   - role: slack
   - role: spotify
   - role: sublime_text
@@ -22,8 +24,6 @@ dependencies:
   - role: wayprompt
   - role: wayvnc
   - role: winbox
+  - role: xwaylandvideobridge
   - role: yubikey
   - role: zen_browser
-  - role: xwaylandvideobridge
-  - role: pywal
-  - role: hunspell
