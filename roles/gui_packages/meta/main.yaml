@@ -2,6 +2,7 @@
 dependencies:
   - role: audio_control
   - role: bottles
+  - role: brave
   - role: darkman
   - role: firefox
   - role: fonts
