@@ -16,6 +16,7 @@
       - mesa
       - lib32-mesa
       - libva-mesa-driver
+      - mesa-utils
     state: present
 
 - name: Install steamtinkerlaunch
