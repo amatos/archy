@@ -7,6 +7,7 @@
       - bluez
       - bluez-libs
       - bluez-tools
+      - bluez-utils
     state: present
 
 - name: Enable and start bluetooth
