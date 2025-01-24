@@ -1,24 +1,32 @@
 ---
 dependencies:
+  - role: 1password
+  - role: TeXlive
+  - role: swappy
+  #  - role: applefonts
   - role: audio_control
   - role: bottles
   - role: brave
   - role: darkman
+  - role: discord
+  - role: espanso
   - role: firefox
+  - role: font_manager
   - role: fonts
   - role: gimp
+  - role: gst_plugins
   - role: hunspell
   - role: libreoffice
   - role: mpv
   - role: neovide
   - role: obsidian
-  - role: partitionmanager
+  - role: openrgb
   - role: pipewire
+  - role: playerctl
   - role: pywal
   - role: slack
   - role: spotify
   - role: sublime_text
-  - role: TeXlive
   - role: thunderbird
   - role: variety
   - role: vlc
