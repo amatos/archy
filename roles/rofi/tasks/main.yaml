@@ -1,0 +1,8 @@
+---
+- name: Install rofi
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - rofi-wayland
+    state: present

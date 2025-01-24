@@ -31,3 +31,4 @@ dependencies:
   - role: zen_browser
   - role: flatpak
   - role: swappy
+  - role: rofi
