@@ -1,0 +1,50 @@
+---
+- name: Install AGS pre-requisites
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - typescript
+      - npm
+      - meson
+      - glib2-devel
+      - gjs
+      - gtk3
+      - gtk-layer-shell
+      - upower
+      - networkmanager
+      - gobject-introspection
+      - libdbusmenu-gtk3
+      - libsoup3
+    use: yay
+    state: present
+  register: ags_prereqs_installed
+
+- name: Pull AGS from github
+  git:
+    repo: https://github.com/Aylur/ags.git
+    dest: /tmp/ags
+    version: "{{ ags_version_tag }}"
+    depth: 1
+  when: ags_prereqs_installed
+  register: cloned_ags
+
+- name: Build npm package
+  shell: npm install
+  args:
+    chdir: /tmp/ags
+  register: ags_npm_build_run
+  when: cloned_ags
+
+- name: Run meson build
+  shell: meson setup build
+  args:
+    chdir: /tmp/ags
+  when: ags_npm_build_run
+  register: ags_meson_build_run
+
+- name: Run meson install
+  shell: meson install -C build
+  args:
+    chdir: /tmp/ags
+  when: ags_meson_build_run
