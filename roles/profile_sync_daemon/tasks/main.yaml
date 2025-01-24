@@ -20,25 +20,25 @@
 
 - name: Create ~/.config/psd directory
   become: true
-  become_user: '{{ user.name }}'
+  become_user: "{{ user.name }}"
   ansible.builtin.file:
     path: ~/.config/psd
     state: directory
-    mode: '0755'
+    mode: "0755"
   register: psd_dir_created
 
 - name: Copy profile-sync-daemon config file
   become: true
-  become_user: '{{ user.name }}'
+  become_user: "{{ user.name }}"
   ansible.builtin.copy:
     src: psd.conf
     dest: ~/.config/psd/psd.conf
-    mode: '0644'
+    mode: "0644"
   when: psd_dir_created
 
 - name: Enable and start profile-sync-daemon user service
   become: true
-  become_user: '{{ user.name }}'
+  become_user: "{{ user.name }}"
   ansible.builtin.service:
     name: psd.service
     enabled: true
