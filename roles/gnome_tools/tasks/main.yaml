@@ -6,3 +6,27 @@
     name:
       - gnome-calculator
     state: present
+
+- name: Install dconf editor
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - dconf-editor
+    state: present
+
+- name: Install Disk Partition Utility
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - gnome-disk-utility
+    state: present
+
+- name: Install Gnome Online Accounts
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - gnome-online-accounts
+    state: present
