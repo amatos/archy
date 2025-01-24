@@ -17,5 +17,6 @@
       - ttf-liberation
       - ttf-meslo-nerd-font-powerlevel10k
       - ttf-pragmasevka-nerd-font
+      - ttf-fira-code
     use: yay
     state: present
