@@ -30,3 +30,4 @@ dependencies:
   - role: blueman
   - role: zen_browser
   - role: flatpak
+  - role: swappy
