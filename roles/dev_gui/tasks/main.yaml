@@ -38,5 +38,3 @@
     name: jetbrains-toolbox
     use: yay
     state: present
-
-/home/alberth/.local/share/JetBrains/Toolbox/apps
