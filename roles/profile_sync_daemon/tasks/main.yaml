@@ -6,12 +6,20 @@
     name: profile-sync-daemon
     state: present
 
-- name: Install additional profile-sync-daemon profiles
+- name: Install Brave profile-sync-daemon profile
   become: true
   become_user: "{{ aur_builder_user }}"
   kewlfft.aur.aur:
     name:
       - profile-sync-daemon-brave
+    use: yay
+    state: present
+
+- name: Install additional profile-sync-daemon profiles
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
       - profile-sync-daemon-zen
       - profile-sync-daemon-zotero
       - profile-sync-daemon-edge-stable
