@@ -104,6 +104,14 @@
     use: yay
     state: present
 
+- name: Install cava
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: cava
+    use: yay
+    state: present
+
 - name: Install bc
   become: true
   become_user: root
@@ -144,4 +152,52 @@
   community.general.pacman:
     name:
       - jq
+    state: present
+
+- name: Install unrar
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - unrar
+    state: present
+
+- name: Install dmidecode
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - dmidecode
+    state: present
+
+- name: Install smartmontools
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - smartmontools
+    state: present
+
+- name: Install tree
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - tree
+    state: present
+
+- name: Install perl-cpanel-json-xs
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - perl-cpanel-json-xs
+    state: present
+
+- name: Install ddcutil
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - ddcutil
     state: present
