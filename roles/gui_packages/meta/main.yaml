@@ -29,3 +29,4 @@ dependencies:
   - role: yubikey
   - role: blueman
   - role: zen_browser
+  - role: flatpak

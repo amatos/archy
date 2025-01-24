@@ -1,0 +1,23 @@
+- name: Install flatpak
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - flatpak
+    state: present
+
+- name: Install flatpak docs
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - flatpak-docs
+    state: present
+
+- name: Install flatseal
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: flatseal
+    use: yay
+    state: present
