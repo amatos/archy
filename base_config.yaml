@@ -42,7 +42,14 @@ local_machine:
     #
     # Valid options: "kde" or "gnome"
     # If left empty, "gnome" will default.
-    hypr_style: "kde"
+    hypr_style: "gnome"
+
+    ##
+    # Greeter for Hyprland
+    #
+    # Valid options: "regreet" or "sddm"
+    # If left empty, "regreet" will default.
+    hypr_greeter: "sddm"
 
     ##
     # Linux Kernel

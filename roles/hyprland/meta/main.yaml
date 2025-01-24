@@ -12,8 +12,8 @@ dependencies:
   - role: qt6_multimedia
   - role: qt_wayland
   - role: regreet
-  - role: greetd_hyprland
-  - role: slurp
+  - { role: greetd_hyprland, when: hypr_greeter == "regreet" }
+  - { role: sddm_hyprland, when: hypr_greeter == "sddm" }
   - role: swaync
   - role: swww
   - role: udiskie
