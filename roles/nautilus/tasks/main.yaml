@@ -9,8 +9,10 @@
       - nautilus-python
       - nautilus-image-converter
       - libnautilus-extension
+      - libnautilus-extension-docs
       - nautilus-image-converter
     state: present
+  notify: Set Nautilus as default file manager
 
 - name: Install Nautilus addons
   become: true
@@ -19,10 +21,28 @@
     name:
       - nautilus-admin-gtk4
       - nautilus-open-any-terminal
+      - seahorse-nautilus
+      - nautilus-metadata-editor
+      - nautilus-checksums
+      - nautilus-hide
+      - nautilus-image-converter
+      - nautilus-annotations
     use: yay
     state: present
 
-- name: Set Nautilus as default file manager
+- name: Install Thumbnailers for Nautilus
   become: true
-  become_user: root
-  ansible.builtin.command: 'xdg-mime default org.gnome.Nautilus.desktop inode/directory'
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - ffmpegthumbnailer
+      - gst-libav
+      - ffmpeg-audio-thumbnailer
+      - webp-pixbuf-loader
+      - freetype2
+      - libgsf
+      - raw-thumbnailer
+      - totem
+      - evince
+    use: yay
+    state: present

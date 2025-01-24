@@ -1,0 +1,3 @@
+---
+- name: Set Nautilus as default file manager
+  ansible.builtin.command: "xdg-mime default org.gnome.Nautilus.desktop inode/directory"
