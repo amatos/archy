@@ -68,3 +68,10 @@
   community.general.pacman:
     name: eslint
     state: present
+
+- name: Deploy clang
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: clang
+    state: present
