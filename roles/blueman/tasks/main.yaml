@@ -1,0 +1,18 @@
+---
+- name: Install Blueman
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - blueman
+    state: present
+
+- name: Install Blueman dependencies
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - dnsmasq
+      - iproute2
+      - networkmanager
+    state: present
