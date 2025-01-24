@@ -1,28 +1,31 @@
 ---
 dependencies:
-  - role: gui_packages
-  - role: avizo
-  - role: brightnessctl
-  - role: clipse
-  - role: fuzzel
-  - role: grim
-  - role: kitty
-  - role: microTeX
-  - role: network_manager_applet
-  - role: qt6_multimedia
-  - role: qt_wayland
-  - role: regreet
+  - { role: pipewire }
+  - { role: gui_packages }
+  - { role: avizo }
+  - { role: brightnessctl }
+  - { role: clipse }
+  - { role: fuzzel }
+  - { role: grim }
+  - { role: kitty }
+  - { role: microTeX }
+  - { role: network_manager_applet }
+  - { role: qt6_multimedia }
+  - { role: qt_wayland }
   - { role: greetd_hyprland, when: hypr_greeter == "regreet" }
   - { role: sddm_hyprland, when: hypr_greeter == "sddm" }
-  - role: swaync
-  - role: swww
-  - role: udiskie
-  - role: uwsm
-  - role: waybar
-  - role: wayland
-  - role: wlogout
-  - role: font_manager
-  - role: arch_xdg_menu
-  - role: gnome_keyring
-  - role: 1password
+  - { role: slurp }
+  - { role: swaync }
+  - { role: swww }
+  - { role: udiskie }
+  - { role: uwsm }
+  - { role: waybar }
+  - { role: wayland }
+  - { role: wlogout }
+  - { role: font_manager }
+  - { role: arch_xdg_menu, when: hypr_style == "kde" }
+  - { role: gnome_keyring }
+  - { role: 1password }
+  - { role: rofi }
+  - { role: gnome_tools, when: hypr_style == "gnome" }
   - { role: ags }

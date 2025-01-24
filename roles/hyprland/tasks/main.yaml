@@ -14,7 +14,7 @@
   kewlfft.aur.aur:
     name:
       - xdg-desktop-portal-gtk
-      - xdg-desktop-portal-kde
+      #      - xdg-desktop-portal-kde
     use: yay
     state: present
 
@@ -38,7 +38,7 @@
       [preferred]
       default=hyprland;gtk
       org.freedesktop.impl.portal.Settings=darkman
-    mode: '0644'
+    mode: "0644"
   when: xdg_portald
 
 - name: Install hyprcursor themes
@@ -50,14 +50,22 @@
     use: yay
     state: present
 
+- name: Install pyprland
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - aur/pyprland
+    use: yay
+    state: present
 #- name: Add Hyprland official plugins
-  #  become: true
-  #  become_user: "{{ user.name }}"
-  #  ansible.builtin.command: "hyprpm add https://github.com/hyprwm/hyprland-plugins"
-  #register: hyprland_official_plugins_installed
-  #ignore_errors: true
+#  become: true
+#  become_user: "{{ user.name }}"
+#  ansible.builtin.command: "hyprpm add https://github.com/hyprwm/hyprland-plugins"
+#register: hyprland_official_plugins_installed
+#ignore_errors: true
 
-    #- name: Add shezdy/hyprsplit plugin
+#- name: Add shezdy/hyprsplit plugin
 #  become: true
 #  become_user: "{{ user.name }}"
 #  ansible.builtin.command: "hyprpm add https://github.com/shezdy/hyprsplit"
@@ -71,13 +79,13 @@
 #  register: hyprspace_installed
 #  ignore_errors: true
 
-  #- name: Enable hyprexpo plugin
-  #become: true
-  #become_user: "{{ user.name }}"
-  #ansible.builtin.command: "hyprpm enable hyprexpo"
-  #when: hyprland_official_plugins_installed
-  #notify: Run hyprpm update
-  #ignore_errors: true
+#- name: Enable hyprexpo plugin
+#become: true
+#become_user: "{{ user.name }}"
+#ansible.builtin.command: "hyprpm enable hyprexpo"
+#when: hyprland_official_plugins_installed
+#notify: Run hyprpm update
+#ignore_errors: true
 
 # - name: Enable hyprbars plugin
 #   become: true
@@ -87,10 +95,10 @@
 #   notify: Run hyprpm update
 #   ignore_errors: yes
 
-  #- name: Enable hyprsplit plugin
-  #become: true
-  #become_user: "{{ user.name }}"
-  #ansible.builtin.command: "hyprpm enable hyprsplit"
-  #when: hyprsplit_installed
-  #notify: Run hyprpm update
-  #ignore_errors: true
+#- name: Enable hyprsplit plugin
+#become: true
+#become_user: "{{ user.name }}"
+#ansible.builtin.command: "hyprpm enable hyprsplit"
+#when: hyprsplit_installed
+#notify: Run hyprpm update
+#ignore_errors: true
