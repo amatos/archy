@@ -4,18 +4,19 @@
   become_user: root
   community.general.pacman:
     name:
-      - wayland
+      #      - wayland
       - qt6-wayland
       - qt5-wayland
+      - wayland-utils
       # For pinentry-qt
-      - kwayland
-      - kwayland5
-      - kwindowsystem
-      - kguiaddons
+      #- kwayland
+      #- kwayland5
+      #- kwindowsystem
+      #- kguiaddons
 
 - name: Enable wayland for Electron (system) apps
   become: true
-  become_user: '{{ user.name }}'
+  become_user: "{{ user.name }}"
   ansible.builtin.copy:
     src: electron25-flags.conf
     dest: ~/.config/electron{{ item }}-flags.conf
