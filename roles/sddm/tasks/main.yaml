@@ -28,6 +28,18 @@
     state: directory
     mode: "0755"
 
+- name: Deploy Wayland config (via Weston)
+  ansible.builtin.copy:
+    src: 10-wayland.conf
+    dest: /etc/sddm.conf.d/
+    mode: "0644"
+
+- name: Deploy SDDM theme config
+  ansible.builtin.copy:
+    src: 20-theme.conf
+    dest: /etc/sddm.conf.d/
+    mode: "0644"
+
 - name: Deploy virtual keyboard config
   ansible.builtin.copy:
     src: 30-virtual_keyboard.conf
