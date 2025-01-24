@@ -22,3 +22,6 @@
     scope: user
     state: started
     enabled: true
+  when:
+    - user.name != "root"
+    - user.name != "aur_builder"
