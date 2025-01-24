@@ -1,4 +1,3 @@
 ---
 dependencies:
-  - role: blueberry
   - role: nautilus
