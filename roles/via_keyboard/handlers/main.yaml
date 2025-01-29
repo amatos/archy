@@ -1,0 +1,5 @@
+---
+- name: Handle Via UDev Update
+  ansible.builtin.command: "udevadm control --reload-rules && udevadm trigger"
+  become: true
+  become_user: root

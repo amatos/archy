@@ -1,0 +1,10 @@
+---
+- name: Create Via/QMX Keyboard rule
+  become: true
+  become_user: root
+  ansible.builtin.lineinfile:
+    path: /etc/udev/rules.d/99-via-keyboards.rules
+    line: 'KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"'
+    create: true
+    mode: "0644"
+  notify: Handle Via UDev Update
