@@ -17,7 +17,7 @@
       - cpanminus
     state: present
 
-- name: Install neovim packages
+- name: Install neovim add-on packages
   become: true
   become_user: "{{ aur_builder_user }}"
   kewlfft.aur.aur:
@@ -25,6 +25,7 @@
       - ruby-neovim
       - neovim-nvim-treesitter
       - tree-sitter-cli
+      - neovim-remote
     use: yay
     state: present
 
