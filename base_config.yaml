@@ -52,6 +52,11 @@ local_machine:
     hypr_greeter: "sddm"
 
     ##
+    # Use extra hyprland, or build from -git
+    #
+    use_hyprland_git: false
+    
+    ##
     # Linux Kernel
     # ============
     # For details, see https://wiki.archlinux.org/title/Kernel

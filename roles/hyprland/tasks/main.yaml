@@ -1,12 +1,35 @@
 ---
 - name: Install Hyprland
   become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - aquamarine
+      - hyprcursor
+      - xdg-desktop-portal-hyprland
+      - hyprpaper
+      - hypridle
+      - hypridle
+      - hyprlock
+      - hyprwayland-scanner
+      - hyprsunset
+      - hyprpolkitagent
+      - hyprutils
+      - hyprpicker
+      - hyprlang
+      - hyprland
+    state: present
+  when: not use_hyprland_git
+
+- name: Install Hyprland-git
+  become: true
   become_user: "{{ aur_builder_user }}"
   kewlfft.aur.aur:
     name:
       - hyprland-meta-git
     use: yay
     state: present
+  when: use_hyprland_git
 
 - name: Install gtk and kde portals
   become: true
