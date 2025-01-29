@@ -35,3 +35,13 @@
   when:
     - avahi_installed
     - no_resolvedmdns
+
+- name: Add nss-mdns entries
+  become: true
+  become_user: root
+  ansible.builtin.lineinfile:
+    dest: /etc/nsswitch.conf
+    state: "present"
+    # Whitespace to keep nice formatting within the file
+    line: "hosts: mymachines mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] files myhostname dns"
+    regexp: "^hosts: mymachines resolve [!UNAVAIL=return] files myhostname dns$"
