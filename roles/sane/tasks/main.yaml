@@ -1,0 +1,10 @@
+---
+- name: Install Sane
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - sane-airscan
+      - sane
+      - colord-sane
+    state: present

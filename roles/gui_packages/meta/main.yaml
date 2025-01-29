@@ -41,3 +41,4 @@ dependencies:
   - role: swappy
   - role: wallust
   - role: rofi
+  - role: sane
