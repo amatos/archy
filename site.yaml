@@ -32,3 +32,6 @@
 
 - name: Development GUI tools
   ansible.builtin.import_playbook: playbooks/dev_gui.yaml
+
+- name: Firewall
+  ansible.builtin.import_playbook: playbooks/firewall.yaml
