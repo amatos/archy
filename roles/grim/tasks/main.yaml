@@ -1,0 +1,16 @@
+---
+- name: Install grim
+  become: true
+  become_user: root
+  community.general.pacman:
+      name:
+          - grim
+      state: present
+
+- name: Install grimblast
+  become: true
+  become_user: '{{ aur_builder_user }}'
+  kewlfft.aur.aur:
+      name: grimblast-git
+      use: yay
+      state: present
