@@ -1,8 +1,18 @@
 ---
 - name: Install Brave browser
   become: true
-  become_user: "{{ aur_builder_user }}"
+  become_user: '{{ aur_builder_user }}'
   kewlfft.aur.aur:
-    name: brave-bin
-    use: yay
-    state: present
+      name: brave-bin
+      use: yay
+      state: present
+  register: installed_brave
+
+- name: Install Brave profile-sync-daemon profile
+  become: true
+  become_user: '{{ aur_builder_user }}'
+  kewlfft.aur.aur:
+      name:
+          - profile-sync-daemon-brave
+      use: yay
+      state: present
