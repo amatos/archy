@@ -1,8 +1,8 @@
 ---
-- name: Install grim
+- name: Install TeXstudio
   become: true
   become_user: root
   community.general.pacman:
     name:
-      - grim
+      - texstudio
     state: present
