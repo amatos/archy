@@ -1,0 +1,18 @@
+---
+- name: Create systemd/logind.conf drop-in directory
+  become: true
+  become_user: root
+  ansible.builtin.file:
+      path: /etc/systemd/logind.conf.d
+      state: directory
+      mode: '0755'
+  register: logindconfd_dropin
+
+- name: Deploy user.conf dropin file
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+      src: RuntimeDirectorySize-dropin.conf
+      dest: /etc/systemd/logind.conf.d
+      mode: '0644'
+  when: logindconfd_dropin
