@@ -1,0 +1,3 @@
+---
+dependencies:
+    - role: profile_sync_daemon
