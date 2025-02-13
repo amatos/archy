@@ -3,3 +3,5 @@ dependencies:
   - role: java
   - role: fontforge
   - role: pandoc
+  - role: inkscape
+  - role: TeXstudio
