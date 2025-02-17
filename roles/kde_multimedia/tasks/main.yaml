@@ -15,7 +15,6 @@
       - kamoso
       - kasts
       - kdenlive
-      - kmix
       - kwave
       - plasmatube
     state: present
