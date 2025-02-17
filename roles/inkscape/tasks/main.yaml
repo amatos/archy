@@ -17,7 +17,6 @@
       - libwmf
       - ghostscript
       - libheif
-      - libxjl
       - fig2dev
       - gvfs
       - pstoedit
