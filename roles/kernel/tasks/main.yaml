@@ -35,6 +35,6 @@
       - linux-lts
       - linux-lts-headers
     state: present
-  when: not kernel == ""
+  when: kernel == "linux-lts"
   notify:
     - Regenerate initramfs
