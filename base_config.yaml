@@ -27,6 +27,7 @@ local_machine:
     # User ID used for AUR packages
     # If using KDE, set this to "{{ user.name }}"
     # Otherwise, leave it as "aur_builder"
+    # aur_builder_user: "{{ user.name }}"
     aur_builder_user: "aur_builder"
 
     system:
@@ -49,12 +50,12 @@ local_machine:
     #
     # Valid options: "regreet" or "sddm"
     # If left empty, "regreet" will default.
-    hypr_greeter: "sddm"
+    hypr_greeter: "regreet"
 
     ##
     # Use extra hyprland, or build from -git
     #
-    use_hyprland_git: false
+    use_hyprland_git: true
     
     ##
     # Linux Kernel
@@ -105,7 +106,7 @@ local_machine:
 
     # Firewall
     # One of: ufw or firewalld
-    firewall: "ufw"
+    firewall: "firewalld"
 
     # Bluetooth
     # install bluez and associated libraries
@@ -114,4 +115,5 @@ local_machine:
       enabled: true
 
     # Install QEMU, libvirt and tools
-    install_virtualization: false
+    install_virtualization: true
+
