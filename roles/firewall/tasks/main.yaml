@@ -24,7 +24,9 @@
     state: enabled
   with_items:
     - "{{ ansible_interfaces }}"
-  when: ('item.startswith("wl")') or ('item.startswith("enp")')
+  when:
+    - 'item.startswith("wl")'
+    - 'item.startswith("enp")'
   notify: Restart FirewallD
 
 - name: Change network for interfaces to "Home" (runtime)
