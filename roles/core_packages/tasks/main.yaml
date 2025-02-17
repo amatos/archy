@@ -7,8 +7,6 @@
     state: present
   with_items:
     - base
-    - ansible
-    - python-jmespath
     - bash
     - coreutils
     - curl
@@ -26,4 +24,5 @@
     - udisks2
     - udisks2-btrfs
     - exfatprogs
+    - zsh
   register: minimal_packages_deployed
