@@ -1,20 +1,30 @@
 ---
 dependencies:
-  - { role: pipewire }
-  - { role: gui_packages }
+  - { role: 1password }
+  #  - { role: ags }
+  - { role: arch_xdg_menu, when: hypr_style == "kde" }
   - { role: avizo }
+  - { role: blueman }
   - { role: brightnessctl }
   - { role: clipse }
+  - { role: font_manager }
   - { role: fuzzel }
+  - { role: gnome_keyring }
+  - { role: gnome_tools, when: hypr_style == "gnome" }
+  - { role: greetd_hyprland, when: hypr_greeter == "regreet" }
   - { role: grim }
+  - { role: gui_packages }
   - { role: kitty }
   - { role: microTeX }
   - { role: network_manager_applet }
+  - { role: pipewire }
+  - { role: pywal }
   - { role: qt6_multimedia }
   - { role: qt_wayland }
-  - { role: greetd_hyprland, when: hypr_greeter == "regreet" }
+  - { role: rofi }
   - { role: sddm_hyprland, when: hypr_greeter == "sddm" }
   - { role: slurp }
+  - { role: swappy }
   - { role: swaync }
   - { role: swww }
   - { role: udiskie }
@@ -22,10 +32,3 @@ dependencies:
   - { role: waybar }
   - { role: wayland }
   - { role: wlogout }
-  - { role: font_manager }
-  - { role: arch_xdg_menu, when: hypr_style == "kde" }
-  - { role: gnome_keyring }
-  - { role: 1password }
-  - { role: rofi }
-  - { role: gnome_tools, when: hypr_style == "gnome" }
-  - { role: ags }
