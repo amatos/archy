@@ -4,7 +4,8 @@
   become: true
   become_user: root
   roles:
-    - {role: steam, tags: ["steam"]}
-    - {role: cartridges, tags: ["cartridges"]}
+    - role: arch_gaming_meta
+    - { role: steam, tags: ["steam"] }
+    - { role: cartridges, tags: ["cartridges"] }
   tags:
     - games

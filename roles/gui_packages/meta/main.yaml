@@ -36,3 +36,4 @@ dependencies:
   - role: xwaylandvideobridge
   - role: yubikey
   - role: zen_browser
+  - role: kitty

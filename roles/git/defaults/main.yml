@@ -1,6 +1,7 @@
 ---
 git_email: "{{ user.email }}"
 git_username: "{{ user.name }}"
+git_name: "{{ user.full_name }}"
 git_install_hub: true
 git_sendemail_confirm: "always"
 git_sendemail_mailbox: ""

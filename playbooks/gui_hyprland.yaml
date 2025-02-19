@@ -4,6 +4,35 @@
   become: true
   become_user: root
   roles:
-    - {role: hyprland, tags: ["hyprland"]}
+    - { role: hyprland, tags: ["hyprland"] }
+    - { role: arch_xdg_menu, when: hypr_style == "kde" }
+    - { role: avizo }
+    - { role: blueman }
+    - { role: brightnessctl }
+    - { role: clipse }
+    - { role: font_manager }
+    - { role: fuzzel }
+    - { role: gnome_keyring }
+    - { role: gnome_tools, when: hypr_style == "gnome" }
+    - { role: greetd_hyprland, when: hypr_greeter == "regreet" }
+    - { role: grim }
+    - { role: gui_packages }
+    - { role: kitty }
+    - { role: microTeX }
+    - { role: network_manager_applet }
+    - { role: pipewire }
+    - { role: qt6_multimedia }
+    - { role: qt_wayland }
+    - { role: rofi }
+    - { role: sddm_hyprland, when: hypr_greeter == "sddm" }
+    - { role: slurp }
+    - { role: swappy }
+    - { role: swaync }
+    - { role: swww }
+    - { role: udiskie }
+    - { role: uwsm }
+    - { role: waybar }
+    - { role: wayland }
+    - { role: wlogout }
   tags:
     - hyprland

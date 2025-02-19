@@ -18,6 +18,7 @@
   become: true
   become_user: root
   ansible.builtin.shell: 'pkgfile --update'
+  when: pkgfile_installed
 
 - name: Start pkgfile-update.timer
   become: true

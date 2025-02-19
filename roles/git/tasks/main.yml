@@ -52,7 +52,7 @@
       community.general.git_config:
         name: user.name
         scope: global
-        value: "{{ git_username }}"
+        value: "{{ git_name }}"
 
     - name: Set git excludesFile
       community.general.git_config:

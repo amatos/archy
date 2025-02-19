@@ -1,4 +1,0 @@
----
-dependencies:
-  - role: makepkg
-  - role: pacman
