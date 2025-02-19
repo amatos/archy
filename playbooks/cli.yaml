@@ -7,7 +7,7 @@
     - {role: git, tags: ["git"]}
     - {role: fish, tags: ["fish"]}
     - {role: gnupg, tags: ["gnupg"]}
-    - {role: devtools, tags: ["devtools"]}
+    - {role: cli_dev_tools, tags: ["devtools", "cli_dev_tools"]}
     - {role: rust, tags: ["rust"]}
     - {role: java, tags: ["java"]}
     - {role: pkgfile, tags: ["pkgfile"]}
