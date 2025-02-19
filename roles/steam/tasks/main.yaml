@@ -24,6 +24,7 @@
   become_user: "{{ aur_builder_user }}"
   kewlfft.aur.aur:
     name:
+      - tinyxxd
       - steamtinkerlaunch
     use: yay
     state: present
