@@ -16,6 +16,7 @@ local_machine:
     ##
     user:
       name: alberth
+      full_name: "Alberth Matos"
       shell: fish
       generate_ssh_key: false
       ssh_key_type: ed25519
@@ -27,9 +28,13 @@ local_machine:
     # User ID used for AUR packages
     # If using KDE, set this to "{{ user.name }}"
     # Otherwise, leave it as "aur_builder"
-    # aur_builder_user: "{{ user.name }}"
-    aur_builder_user: "aur_builder"
-
+    aur_builder_user: |-
+      {%- if ansible_user_id == "root" -%}
+      aur_builder
+      {%- else -%}
+      {{ user.name }}
+      {%- endif -%}
+    # aur_builder_user: "aur_builder"
     system:
       hostname: "Necronomicon.home.matos.cc"
       locale: "en_US.UTF-8"
