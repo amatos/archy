@@ -4,15 +4,15 @@
   become_user: root
   community.general.pacman:
     name:
-      #      - wayland
+      # - wayland
       - qt6-wayland
       - qt5-wayland
       - wayland-utils
       # For pinentry-qt
-      #- kwayland
-      #- kwayland5
-      #- kwindowsystem
-      #- kguiaddons
+      # - kwayland
+      # - kwayland5
+      # - kwindowsystem
+      # - kguiaddons
 
 - name: Enable wayland for Electron (system) apps
   become: true
