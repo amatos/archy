@@ -1,0 +1,9 @@
+---
+- name: Install Bibata Cursor
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - aur/bibata-cursor-git
+    use: yay
+    state: present

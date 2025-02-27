@@ -34,5 +34,6 @@
     - { role: waybar }
     - { role: wayland }
     - { role: wlogout }
+    - { role: bibata }
   tags:
     - hyprland

@@ -74,15 +74,6 @@
     mode: "0644"
   when: xdg_portald
 
-- name: Install hyprcursor themes
-  become: true
-  become_user: "{{ aur_builder_user }}"
-  kewlfft.aur.aur:
-    name:
-      - aur/bibata-cursor-git
-    use: yay
-    state: present
-
 - name: Install pyprland
   become: true
   become_user: "{{ aur_builder_user }}"
