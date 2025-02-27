@@ -1,8 +1,8 @@
 ---
 - name: Install xwaylandvideobridge
   become: true
-  become_user: root
-  community.general.pacman:
-    name:
-      - xwaylandvideobridge
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: xwaylandvideobridge
+    use: yay
     state: present
