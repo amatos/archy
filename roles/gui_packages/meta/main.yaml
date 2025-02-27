@@ -1,6 +1,6 @@
 ---
 dependencies:
-  #  - role: applefonts
+  # - role: applefonts
   # - role: firefox
   - role: 1password
   - role: arch_update
@@ -14,6 +14,7 @@ dependencies:
   - role: gimp
   - role: gst_plugins
   - role: hunspell
+  - role: kitty
   - role: libreoffice
   - role: mpv
   - role: neovide
@@ -38,4 +39,3 @@ dependencies:
   - role: yubikey
   - role: zeditor
   - role: zen_browser
-  - role: kitty
