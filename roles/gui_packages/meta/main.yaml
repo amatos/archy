@@ -36,5 +36,6 @@ dependencies:
   - role: winbox
   - role: xwaylandvideobridge
   - role: yubikey
+  - role: zeditor
   - role: zen_browser
   - role: kitty
