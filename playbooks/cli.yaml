@@ -21,5 +21,6 @@
     - {role: cli_packages, tags: ["cli_packages"]}
     - {role: firewall, tags: ["firewall"]}
     - {role: powerprofiles, tags: ["powerprofiles"]}
+    - { role: rclone, tags: ["rclone"] }
   tags:
     - cli
