@@ -6,4 +6,4 @@
     name: autotrash
     use: yay
     state: present
-    #  notify: Install Autotrash Service
+  notify: Install Autotrash Service
