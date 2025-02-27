@@ -6,7 +6,6 @@
     name:
       - sddm
       - qt6-virtualkeyboard
-      - weston
       - layer-shell-qt
       - layer-shell-qt5
     state: present
