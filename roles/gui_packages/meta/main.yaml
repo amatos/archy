@@ -3,6 +3,7 @@ dependencies:
   #  - role: applefonts
   # - role: firefox
   - role: 1password
+  - role: arch_update
   - role: audio_control
   - role: bottles
   - role: darkman
