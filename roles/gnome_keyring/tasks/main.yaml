@@ -53,7 +53,7 @@
     new_type: session
     new_control: optional
     new_module_path: pam_gnome_keyring.so
-    module_arguments: 'auto_start'
+    module_arguments: "auto_start"
     state: after
 
 - name: Configure PAM automatic user password sync
@@ -71,7 +71,7 @@
 
 - name: Make sure that ssh-agent wrapper is disabled
   become: true
-  become_user: '{{ user.name }}'
+  become_user: "{{ user.name }}"
   ansible.builtin.systemd:
     name: "{{ item }}"
     enabled: false
@@ -87,5 +87,5 @@
   become_user: root
   ansible.builtin.lineinfile:
     path: /usr/share/xdg-desktop-portal/portals/gnome-keyring.portal
-    regexp: '^UseIn='
+    regexp: "^UseIn="
     line: UseIn=gnome;hyprland;sway

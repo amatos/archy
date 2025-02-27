@@ -3,13 +3,13 @@
   become: true
   become_user: root
   community.general.timezone:
-    name: '{{ system.timezone }}'
+    name: "{{ locale_system.timezone }}"
 
 - name: Create symlink to zoneinfo file
   become: true
   become_user: root
   ansible.builtin.file:
-    src: '/usr/share/zoneinfo/{{ system.timezone }}'
+    src: "/usr/share/zoneinfo/{{ locale_system.timezone }}"
     dest: /etc/localtime
     state: link
 
@@ -17,7 +17,7 @@
   become: true
   become_user: root
   community.general.locale_gen:
-    name: '{{ system.locale }}'
+    name: "{{ locale_system.locale }}"
     state: present
 
 - name: Update /etc/vconsole.conf
@@ -29,7 +29,7 @@
     create: true
     block: |
       KEYMAP=us
-    mode: '0644'
+    mode: "0644"
 
 - name: Update /etc/locale.conf
   become: true
@@ -39,8 +39,8 @@
     append_newline: true
     create: true
     block: |
-      LANG={{ system.locale }}
-    mode: '0644'
+      LANG={{ locale_system.locale }}
+    mode: "0644"
 
 - name: Update /etc/locale.gen
   become: true
@@ -57,3 +57,4 @@
   become_user: root
   ansible.builtin.command: "/usr/bin/locale-gen"
   when: updated_locale
+  changed_when: true

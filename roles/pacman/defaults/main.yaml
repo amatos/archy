@@ -1,5 +1,5 @@
 ---
-pacman:
+pacman_pacman:
   update: false
   upgrade: false
   multilib: false

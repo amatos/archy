@@ -5,6 +5,7 @@
   ansible.builtin.command: >
     awk -F: '/^flags/ {print $2; exit}' /proc/cpuinfo
   register: cpu_flags_cmd
+  changed_when: false
 
 # Extract the flags into a list variable named `cpu_flags`.
 - name: Set cpu flags fact
@@ -17,11 +18,13 @@
   ansible.builtin.command: grep -q Intel /proc/cpuinfo
   ignore_errors: true
   register: is_intel
+  changed_when: false
 
 - name: Check if AMD processor
   ansible.builtin.command: grep -q AMD /proc/cpuinfo
   ignore_errors: true
   register: is_amd
+  changed_when: false
 
 - name: Install microcode updates for intel (if necessary)
   become: true

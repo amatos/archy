@@ -71,6 +71,6 @@
   become_user: root
   community.general.nmcli:
     type: ethernet
-    conn_name: 'Wired connection 1'
+    conn_name: "Wired connection 1"
     zone: home
     state: present

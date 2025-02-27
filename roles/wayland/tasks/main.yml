@@ -20,7 +20,7 @@
   ansible.builtin.copy:
     src: electron25-flags.conf
     dest: ~/.config/electron{{ item }}-flags.conf
-    mode: 0644
+    mode: "0o644"
   loop:
     - 28
     - 27

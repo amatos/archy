@@ -12,8 +12,8 @@
   become_user: root
   ansible.builtin.replace:
     path: /etc/xdg/reflector/reflector.conf
-    regexp: '--latest 5'
-    replace: '# --latest 5'
+    regexp: "--latest 5"
+    replace: "# --latest 5"
   register: commented_out
   when: reflector_installed
 

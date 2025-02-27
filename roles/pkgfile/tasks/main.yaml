@@ -17,7 +17,8 @@
 - name: Run pkgfile update
   become: true
   become_user: root
-  ansible.builtin.shell: 'pkgfile --update'
+  ansible.builtin.command: "pkgfile --update"
+  changed_when: true
   when: pkgfile_installed
 
 - name: Start pkgfile-update.timer

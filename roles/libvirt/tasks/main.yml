@@ -25,7 +25,7 @@
   ansible.builtin.copy:
     src: libvirt-nft.conf
     dest: /etc/nftables.d/01-libvirt.conf
-    mode: 0644
+    mode: "0644"
   notify:
     - Reload nftables
 
@@ -42,4 +42,4 @@
   ansible.builtin.systemd:
     name: libvirtd
     state: started
-  when: install_packages.changed  # noqa: no-handler
+  when: install_packages.changed # noqa: no-handler

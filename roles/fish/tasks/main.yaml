@@ -15,8 +15,6 @@
       - pkgfile
     state: present
 
-
-
 - name: Install fzf
   become: true
   become_user: root

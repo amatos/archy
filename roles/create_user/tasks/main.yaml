@@ -1,5 +1,5 @@
 ---
-- name: Ensure the user "{{ user.name }}" exists
+- name: Ensure the user exists -- "{{ user.name }}"
   become: true
   become_user: root
   ansible.builtin.user:

@@ -1,8 +1,7 @@
 ---
 dependencies:
-  - role: clipse
-  - role: firefox
-  - role: flameshot
+  - role: zen_browser
+  - role: vivaldi
   - role: gui_packages
   - role: kde_accessibility
   - role: kde_games
@@ -15,7 +14,6 @@ dependencies:
   - role: kdevelop
   - role: kitty
   - role: mpv
-  - role: pipewire
   - role: pipewire
   - role: qt6_multimedia
   - role: qt_wayland

@@ -29,7 +29,7 @@
     line: "aur_builder ALL=(ALL:ALL) NOPASSWD: ALL"
     create: true
     validate: "visudo -cf %s"
-    mode: 0440
+    mode: "0440"
 
 - name: Install base-devel
   become: true
@@ -42,7 +42,8 @@
 - name: Run rust-up to define rust environment
   become: true
   become_user: "{{ aur_builder_user }}"
-  ansible.builtin.command: '/usr/bin/rustup default stable'
+  ansible.builtin.command: "/usr/bin/rustup default stable"
+  changed_when: true
 
 - name: Install yay manager for AUR
   become: true
