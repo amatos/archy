@@ -55,13 +55,13 @@ local_machine:
     #
     # Valid options: "regreet" or "sddm"
     # If left empty, "regreet" will default.
-    hypr_greeter: "regreet"
+    hypr_greeter: "sddm"
 
     ##
     # Use extra hyprland, or build from -git
     #
-    use_hyprland_git: true
-    
+    use_hyprland_git: false
+
     ##
     # Linux Kernel
     # ============
@@ -121,4 +121,3 @@ local_machine:
 
     # Install QEMU, libvirt and tools
     install_virtualization: true
-
