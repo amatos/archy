@@ -1,0 +1,8 @@
+---
+- name: Install rclone
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - rclone
+    state: present

@@ -14,6 +14,21 @@
     enabled: true
     state: started
 
+- name: Remove interfaces from "Public" (permanent)
+  become: true
+  become_user: root
+  ansible.posix.firewalld:
+    zone: public
+    interface: "{{ item }}"
+    permanent: true
+    immediate: true
+    state: disabled
+  with_items:
+    - "{{ ansible_interfaces }}"
+  when: ('item.startswith("wl")' or 'item.startswith("enp")')
+  notify: Restart FirewallD
+  register: removed_public
+
 - name: Change network for interfaces to "Home" (permanent)
   become: true
   become_user: root
@@ -21,26 +36,13 @@
     zone: home
     interface: "{{ item }}"
     permanent: true
+    immediate: true
     state: enabled
   with_items:
     - "{{ ansible_interfaces }}"
   when:
-    - 'item.startswith("wl")'
-    - 'item.startswith("enp")'
-  notify: Restart FirewallD
-
-- name: Change network for interfaces to "Home" (runtime)
-  become: true
-  become_user: root
-  ansible.posix.firewalld:
-    zone: home
-    interface: "{{ item }}"
-    state: enabled
-  with_items:
-    - "{{ ansible_interfaces }}"
-  when:
-    - 'item.startswith("wl")'
-    - 'item.startswith("enp")'
+    - ('item.startswith("wl")' or 'item.startswith("enp")')
+    - removed_public
   notify: Restart FirewallD
 
 - name: Updating home zone rules
@@ -63,3 +65,12 @@
     - syncthing-relay
     - upnp-client
     - mndp
+
+- name: Use nmcli to set firewalld zone
+  become: true
+  become_user: root
+  community.general.nmcli:
+    type: ethernet
+    conn_name: "Wired connection 1"
+    zone: home
+    state: present

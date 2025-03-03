@@ -5,6 +5,7 @@
   ansible.builtin.command: >
     awk -F: '/^flags/ {print $2; exit}' /proc/cpuinfo
   register: cpu_flags_cmd
+  changed_when: cpu_flags_cmd.rc != 0
 
 # Extract the flags into a list variable named `cpu_flags`.
 - name: Set cpu flags fact
@@ -13,15 +14,17 @@
 
 # Identify the processor manufacturer by looking for "Intel" or "AMD"
 # in `/proc/cpuinfo`.
-- name: check if Intel processor
+- name: Check if Intel processor
   ansible.builtin.command: grep -q Intel /proc/cpuinfo
   ignore_errors: true
   register: is_intel
+  changed_when: false
 
-- name: check if AMD processor
+- name: Check if AMD processor
   ansible.builtin.command: grep -q AMD /proc/cpuinfo
   ignore_errors: true
   register: is_amd
+  changed_when: false
 
 - name: Create /etc/cmdline.d directory
   become: true
@@ -35,8 +38,9 @@
     - Regenerate initramfs
 
 - name: Find UEFI partition
-  ansible.builtin.shell: 'cat /etc/fstab |grep efi | grep UUID | cut -f 2'
+  ansible.builtin.shell: "set -o pipefail && cat /etc/fstab |grep efi | grep UUID | cut -f 2"
   register: uefi_path
+  changed_when: true
 
 - name: Create UEFI/EFI/Linux
   become: true
@@ -44,17 +48,19 @@
   ansible.builtin.file:
     path: "{{ uefi_path.stdout | replace(' ', '') }}/EFI/Linux"
     state: directory
-    mode: '0755'
+    mode: "0755"
   notify:
     - Regenerate initramfs
 
 - name: Get boot device UUID
-  ansible.builtin.command: "blkid -s UUID -o value {{ root_device }}"   # noqa: no-handler
+  ansible.builtin.command: "blkid -s UUID -o value {{ root_device }}" # noqa: no-handler
   register: root_uuid
+  changed_when: false
 
 - name: Get swap device UUID
-  ansible.builtin.shell: 'cat /etc/fstab | grep swap | grep "UUID" | cut -f 1'   # noqa: no-handler
+  ansible.builtin.shell: 'set -o pipefail && cat /etc/fstab | grep swap | grep "UUID" | cut -f 1' # noqa: no-handler
   register: swap_uuid
+  changed_when: false
 
 - name: Populate kernel command line root file
   become: true
@@ -62,7 +68,7 @@
   ansible.builtin.template:
     src: root.conf.j2
     dest: /etc/cmdline.d/root.conf
-    mode: '0644'
+    mode: "0644"
 
 - name: Populate kernel command line resume file
   become: true
@@ -70,7 +76,7 @@
   ansible.builtin.template:
     src: resume.conf.j2
     dest: /etc/cmdline.d/resume.conf
-    mode: '0644'
+    mode: "0644"
 
 - name: Populate kernel command line plymouth file
   become: true
@@ -78,7 +84,7 @@
   ansible.builtin.copy:
     src: plymouth.conf
     dest: /etc/cmdline.d
-    mode: '0644'
+    mode: "0644"
 
 - name: Populate kernel command line amd file
   become: true
@@ -86,7 +92,7 @@
   ansible.builtin.copy:
     src: amd.conf
     dest: /etc/cmdline.d
-    mode: '0644'
+    mode: "0644"
   when: is_amd
 
 - name: Populate kernel command line kernel file
@@ -95,4 +101,4 @@
   ansible.builtin.copy:
     src: kernel.conf
     dest: /etc/cmdline.d
-    mode: '0644'
+    mode: "0644"

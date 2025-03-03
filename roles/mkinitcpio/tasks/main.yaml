@@ -20,14 +20,13 @@
   notify:
     - Regenerate initramfs
 
-
 - name: Ensure directory exists
   become: true
   become_user: root
   ansible.builtin.file:
     path: /etc/mkinitcpio.conf.d
     state: directory
-    mode: 0755
+    mode: "0o755"
   register: mkinitcpio_exists
 
 - name: Push mkinitcpio configuration
@@ -36,7 +35,7 @@
   ansible.builtin.template:
     src: mkinitcpio.conf.j2
     dest: /etc/mkinitcpio.conf.d/mkinitcpio-override.conf
-    mode: '0644'
+    mode: "0o644"
   notify:
     - Regenerate initramfs
   when: mkinitcpio_exists
@@ -45,3 +44,4 @@
   become: true
   become_user: root
   ansible.builtin.command: "mkinitcpio -P"
+  changed_when: true

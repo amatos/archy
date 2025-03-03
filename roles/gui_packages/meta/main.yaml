@@ -1,8 +1,9 @@
 ---
 dependencies:
-  #  - role: applefonts
+  # - role: applefonts
   # - role: firefox
   - role: 1password
+  - role: arch_update
   - role: audio_control
   - role: bottles
   - role: darkman
@@ -13,6 +14,7 @@ dependencies:
   - role: gimp
   - role: gst_plugins
   - role: hunspell
+  - role: kitty
   - role: libreoffice
   - role: mpv
   - role: neovide
@@ -35,4 +37,5 @@ dependencies:
   - role: winbox
   - role: xwaylandvideobridge
   - role: yubikey
+  - role: zeditor
   - role: zen_browser

@@ -31,11 +31,13 @@
 
 - name: Deploy neovim node package
   ansible.builtin.command: "npm install -g neovim"
+  changed_when: true
 
 - name: Deploy neovim ruby package
   become: true
   become_user: "{{ aur_builder_user }}"
   ansible.builtin.command: "gem install neovim"
+  changed_when: true
 
 - name: Install php
   become: true
@@ -67,3 +69,4 @@
   become: true
   become_user: root
   ansible.builtin.command: "/usr/bin/vendor_perl/cpanm -n Neovim::Ext"
+  changed_when: true

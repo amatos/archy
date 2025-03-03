@@ -1,9 +1,0 @@
----
-extends: default
-
-ignore:
-  - .github/
-  - roles/jira/templates/config.yaml
-
-rules:
-  line-length: disable

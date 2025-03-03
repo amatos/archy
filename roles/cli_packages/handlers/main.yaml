@@ -3,3 +3,4 @@
   become: true
   become_user: "{{ user.name }}"
   ansible.builtin.command: "tldr -u"
+  changed_when: true

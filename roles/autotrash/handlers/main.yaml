@@ -1,1 +1,8 @@
 ---
+- name: Run autotrash
+  ansible.builtin.command:
+    argv:
+      - /usr/bin/autotrash
+      - -d 14
+      - -tv
+      - --install

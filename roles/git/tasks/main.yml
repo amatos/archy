@@ -32,15 +32,15 @@
 
 - name: Copy global excludesfile
   become: true
-  become_user: '{{ user.name }}'
+  become_user: "{{ user.name }}"
   ansible.builtin.copy:
     src: gitignore_global
     dest: ~/.gitignore_global
-    mode: 0644
+    mode: "0644"
 
 - name: Set up gitconfig
   become: true
-  become_user: '{{ user.name }}'
+  become_user: "{{ user.name }}"
   block:
     - name: Set git user.email
       community.general.git_config:
@@ -52,7 +52,7 @@
       community.general.git_config:
         name: user.name
         scope: global
-        value: "{{ git_username }}"
+        value: "{{ git_name }}"
 
     - name: Set git excludesFile
       community.general.git_config:
@@ -80,7 +80,7 @@
 
 - name: Set up sendmail
   become: true
-  become_user: '{{ user.name }}'
+  become_user: "{{ user.name }}"
   block:
     - name: Set sendmail command
       community.general.git_config:

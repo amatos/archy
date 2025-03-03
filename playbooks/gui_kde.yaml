@@ -4,6 +4,11 @@
   become: true
   become_user: root
   roles:
-    - {role: plasma_desktop, tags: ["plasma_desktop"]}
+    - role: pipewire
+    - role: qt6_multimedia
+    - role: qt_wayland
+    - role: plasma_desktop
+    - role: bibata
+    - role: dev_gui
   tags:
-    - kde
+    - plasma_desktop

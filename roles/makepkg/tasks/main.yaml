@@ -16,7 +16,7 @@
   ansible.builtin.copy:
     src: mkpkg-buildenv.conf
     dest: /etc/makepkg.conf.d/
-    mode: '0644'
+    mode: "0644"
 
 - name: Deploy makepkg dropin for compiler settings
   become: true
@@ -24,7 +24,7 @@
   ansible.builtin.copy:
     src: mkpkg-compiler.conf
     dest: /etc/makepkg.conf.d/
-    mode: '0644'
+    mode: "0644"
 
 - name: Deploy makepkg dropin for compression
   become: true
@@ -32,7 +32,7 @@
   ansible.builtin.copy:
     src: mkpkg-compression.conf
     dest: /etc/makepkg.conf.d/
-    mode: '0644'
+    mode: "0644"
 
 - name: Deploy makepkg dropin for global options
   become: true
@@ -40,4 +40,4 @@
   ansible.builtin.copy:
     src: mkpkg-global-options.conf
     dest: /etc/makepkg.conf.d/
-    mode: '0644'
+    mode: "0644"

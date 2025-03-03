@@ -1,3 +1,4 @@
 ---
 dependencies:
+  - role: pipewire
   - role: yt-dlp

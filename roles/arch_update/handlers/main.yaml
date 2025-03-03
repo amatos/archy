@@ -1,0 +1,9 @@
+---
+- name: Run arch_update
+  ansible.builtin.command:
+    argv:
+      - /usr/bin/arch-update
+      - --tray
+      - --enable
+  register: arch_update_output
+  changed_when: arch_update_output != 0
