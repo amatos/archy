@@ -1,0 +1,2 @@
+---
+uki_root_device: "{{ ansible_mounts | json_query('[?mount == `/`].device') | first }}"

@@ -7,3 +7,5 @@ refind_common_boot:
 refind_amd_boot:
   - amd_pstate=active
   - amdgpu.dc=1
+
+refind_root_device: "{{ ansible_mounts | json_query('[?mount == `/`].device') | first }}"
