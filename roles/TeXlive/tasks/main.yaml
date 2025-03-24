@@ -3,8 +3,11 @@
   become: true
   become_user: root
   community.general.pacman:
-    name: texlive
+    name: texlive-installer
     state: present
+
+- name: display post install message
+  debug: msg="{{ Run sudo `/opt/texlive-installer/install-tl` to install TexLive }}"
 
 - name: Install additional TeX packages
   become: true
@@ -23,9 +26,4 @@
     - perl-yaml-tiny
     - python
     - python-pygments
-    - texlive-fontsextra
-    - texlive-fontsrecommended
-    - texlive-lang
-    - texlive-latexextra
-    - texlive-latexrecommended
     - wdiff
