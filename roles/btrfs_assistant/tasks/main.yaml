@@ -1,0 +1,11 @@
+---
+- name: Install btrfs assistant and snapper
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - btrfs-assistant
+      - snapper
+      - btrfsmaintenance
+    use: yay
+    state: present
