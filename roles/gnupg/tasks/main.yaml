@@ -89,7 +89,7 @@
 
 - name: Ensure that provided GPG key is imported and trusted
   # Only run when key is actually provided
-  when: gpg_user_key | length > 0
+  when: gnupg_gpg_user_key | length > 0
   block:
     - name: Check if the key is available in keyring
       ansible.builtin.command:
