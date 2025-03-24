@@ -6,9 +6,11 @@
     name: arch-update
     use: yay
     state: present
-  notify: Run arch-update
+  notify: Run arch_update
 
 - name: Start arch-update timer
+  become: true
+  become_user: '{{ user.name }}'
   ansible.builtin.systemd_service:
     name: arch-update.timer
     state: started
