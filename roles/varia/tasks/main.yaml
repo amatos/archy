@@ -1,0 +1,8 @@
+---
+- name: Install Varia
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: varia
+    use: yay
+    state: present

@@ -39,3 +39,4 @@ dependencies:
   - role: yubikey
   - role: zeditor
   - role: zen_browser
+  - role: varia
