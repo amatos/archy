@@ -7,9 +7,11 @@
     - { role: hyprland, tags: ["hyprland"] }
     - { role: arch_xdg_menu, when: hypr_style == "kde" }
     - { role: avizo }
+    - { role: bibata }
     - { role: blueman }
     - { role: brightnessctl }
     - { role: clipse }
+    - { role: dev_gui }
     - { role: font_manager }
     - { role: fuzzel }
     - { role: gnome_keyring }
@@ -33,8 +35,7 @@
     - { role: uwsm }
     - { role: waybar }
     - { role: wayland }
+    - { role: wayprompt }
     - { role: wlogout }
-    - { role: bibata }
-    - { role: dev_gui }
   tags:
     - hyprland
