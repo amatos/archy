@@ -4,7 +4,7 @@
   become_user: '{{ aur_builder_user }}'
   kewlfft.aur.aur:
       name:
-          - zen-browser-avx2-bin
+          - zen-browser-bin
       use: yay
       state: present
 
