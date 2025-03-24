@@ -21,5 +21,6 @@
     - { role: firewall, tags: ["firewall"] }
     - { role: powerprofiles, tags: ["powerprofiles"] }
     - { role: rclone, tags: ["rclone"] }
+    - { role: fastfetch, tags: ["fastfetch"] }
   tags:
     - cli
