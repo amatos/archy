@@ -39,7 +39,7 @@
   register: created_wireplumber_conf_dir
 
 - name: Deploy 51-disable-suspension.conf
-  ansible.builtin.template:
+  ansible.builtin.copy:
     src: 51-disable-suspension.conf
     dest: ~/.config/wireplumber/wireplumber.conf.d/
     mode: "0o644"
