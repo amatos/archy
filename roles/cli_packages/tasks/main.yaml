@@ -201,3 +201,11 @@
     name:
       - ddcutil
     state: present
+
+- name: Install moar
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: moar
+    use: yay
+    state: present
