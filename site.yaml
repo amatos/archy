@@ -19,6 +19,9 @@
 - name: COSMIC
   ansible.builtin.import_playbook: playbooks/gui_cosmic.yaml
 
+- name: Gnome
+  ansible.builtin.import_playbook: playbooks/gui_gnome.yaml
+
 - name: Games
   ansible.builtin.import_playbook: playbooks/games.yaml
 

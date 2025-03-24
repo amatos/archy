@@ -1,0 +1,15 @@
+---
+- name: Install Gnome Desktop
+  hosts: all
+  become: true
+  become_user: root
+  roles:
+    - role: pipewire
+    - role: gnome
+    - role: dev_gui
+    - role: gnome_tools
+    - role: gui_packages
+    - role: kitty
+    - role: microTeX
+  tags:
+    - gnome_desktop
