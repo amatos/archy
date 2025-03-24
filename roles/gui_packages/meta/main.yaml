@@ -39,3 +39,4 @@ dependencies:
   - role: zeditor
   - role: zen_browser
   - role: varia
+  - role: xpadneo
