@@ -18,5 +18,7 @@
       - ttf-meslo-nerd-font-powerlevel10k
       - ttf-pragmasevka-nerd-font
       - ttf-fira-code
+      - ttf-aptos
+      - ttf-ms-win11-auto
     use: yay
     state: present
