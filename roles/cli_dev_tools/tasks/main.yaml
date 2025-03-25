@@ -75,3 +75,10 @@
   community.general.pacman:
     name: clang
     state: present
+
+- name: Deploy lazygit CLI git UI
+  become: true
+  become_user: root
+  community.general.pacman:
+    name: lazygit
+    state: present
