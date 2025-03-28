@@ -15,3 +15,10 @@
     groups: gamemode
     append: yes
 
+- name: Copy global gamemode config
+  become: true
+  become_user: "root"
+  ansible.builtin.copy:
+    src: gamemode.ini
+    dest: /etc/gamemode.ini
+    mode: "0644"
