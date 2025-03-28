@@ -6,4 +6,12 @@
     name:
       - gamemode
     state: present
-  notify: Register gamemode user
+
+- name: Register gamemode user
+  become: true
+  become_user: root
+  user:
+    name: "{{ user.name }}"
+    groups: gamemode
+    append: yes
+
