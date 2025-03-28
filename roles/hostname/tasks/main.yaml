@@ -12,3 +12,14 @@
     line: "{{ system.hostname }}"
     create: true
     mode: "0644"
+
+- name: Update /etc/hosts
+  become: true
+  become_user: root
+  ansible.builtin.blockinfile:
+    path: /etc/hosts
+    append_newline: true
+    create: true
+    block: |
+      {{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }} {{ system.hostname }} {{ system.hostname.split('.')[0] }}
+    mode: "0644"
