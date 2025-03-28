@@ -41,7 +41,7 @@
       - webp-pixbuf-loader
       - freetype2
       - libgsf
-      - raw-thumbnailer
+      - ufraw-thumbnailer
       - totem
       - evince
     use: yay
