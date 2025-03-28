@@ -30,3 +30,43 @@
     name:
       - gnome-online-accounts
     state: present
+
+- name: Install Gnome Usage tool
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - gnome-usage
+    state: present
+
+- name: Install Guake terminal
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - guake
+    state: present
+
+- name: Install Gnac
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - gnac
+    state: present
+
+- name: Install gnome-shell-extension-desktop-icons-ng
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - gnome-shell-extension-desktop-icons-ng
+    state: present
+
+- name: Install switcheroo-control
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - switcheroo-control
+    state: present
