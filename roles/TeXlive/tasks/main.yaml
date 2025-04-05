@@ -2,12 +2,12 @@
 - name: Install TeXLive
   become: true
   become_user: root
-  community.general.pacman:
+  kewlfft.aur.aur:
     name: texlive-installer
     state: present
 
 - name: display post install message
-  debug: msg="{{ Run sudo `/opt/texlive-installer/install-tl` to install TexLive }}"
+  debug: msg="Run sudo `/opt/texlive-installer/install-tl` to install TexLive"
 
 - name: Install additional TeX packages
   become: true
