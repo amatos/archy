@@ -11,3 +11,12 @@
       - protonup-qt
     use: yay
     state: present
+
+- name: Install additional 32-bit libraries
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - lib32-gamemode
+    use: yay
+    state: present
