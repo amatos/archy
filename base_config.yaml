@@ -121,3 +121,11 @@ local_machine:
 
     # Install QEMU, libvirt and tools
     install_virtualization: true
+
+    # msmtp settings
+    msmtp:
+      smarthost: huginn.home.matos.cc
+      domainname: matos.cc
+      port: 25
+      tls_enable: off
+      starttls_enable: off

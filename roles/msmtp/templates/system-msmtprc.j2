@@ -1,0 +1,18 @@
+# A system wide configuration file is optional.
+# If it exists, it usually defines a default account.
+# This allows msmtp to be used like /usr/sbin/sendmail.
+account default
+
+# The SMTP smarthost
+host {{ msmtp.smarthost }}
+
+# Use smtp on port 25
+port {{ msmtp.port }}
+tls {{ msmtp.tls_enable }}
+tls_starttls {{ msmtp.starttls_enable }}
+
+# Construct envelope-from addresses of the form "user@oursite.example"
+from %U@{{ msmtp.domainname }}
+
+# Syslog logging with facility LOG_MAIL instead of the default LOG_USER
+syslog LOG_MAIL

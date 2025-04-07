@@ -6,15 +6,30 @@
     name:
       - msmtp
 
-- name: Check if .msmtprc exists
+- name: Check if system msmtprc exists
   become: true
-  become_user: '{{ user.name }}'
+  become_user: root
   stat:
-    path: ~/.msmtprc
-  register: smtprc_exists
+    path: /etc/msmtprc
+  register: system_smtprc_exists
 
-- name: Use msmtp to generate a config file
+- name: Deploy system msmtprc
   become: true
-  become_user: '{{ user.name }}'
-  ansible.builtin.command: 'msmtp --configure {{ user.email }} > ~.msmtprc'
-  when: not smtprc_exists
+  become_user: root
+  ansible.builtin.template:
+    src: system-msmtprc.j2
+    dest: /etc/msmtprc
+    mode: "0o644"
+  when: not system_smtprc_exists
+# - name: Check if .msmtprc exists
+#   become: true
+#   become_user: "{{ user.name }}"
+#   stat:
+#     path: ~/.msmtprc
+#   register: smtprc_exists
+
+# - name: Use msmtp to generate a config file
+#   become: true
+#   become_user: "{{ user.name }}"
+#   ansible.builtin.command: "msmtp --configure {{ user.email }} > ~.msmtprc"
+#   when: not smtprc_exists
