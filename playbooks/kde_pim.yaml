@@ -1,0 +1,15 @@
+---
+- name: Install KDE PIM Tools
+  hosts: all
+  become: true
+  become_user: root
+  roles:
+    - role: pipewire
+    - role: qt6_multimedia
+    - role: qt_wayland
+    - role: plasma_desktop
+    - role: bibata
+    - role: dev_gui
+    - role: kde_pim
+  tags:
+    - kde_pim

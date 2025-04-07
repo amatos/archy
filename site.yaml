@@ -16,6 +16,9 @@
 - name: KDE
   ansible.builtin.import_playbook: playbooks/gui_kde.yaml
 
+- name: KDE_PIM
+  ansible.builtin.import_playbook: playbooks/kde_pim.yaml
+
 - name: COSMIC
   ansible.builtin.import_playbook: playbooks/gui_cosmic.yaml
 
