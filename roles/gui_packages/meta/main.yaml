@@ -25,6 +25,7 @@ dependencies:
   - role: sane
   - role: slack
   - role: spotify
+  - role: solaar
   - role: sublime_text
   - role: TeXlive
   - role: thunderbird
