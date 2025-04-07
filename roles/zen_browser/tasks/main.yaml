@@ -1,18 +1,28 @@
 ---
 - name: Install Zen browser
   become: true
-  become_user: '{{ aur_builder_user }}'
+  become_user: "{{ aur_builder_user }}"
   kewlfft.aur.aur:
-      name:
-          - zen-browser-bin
-      use: yay
-      state: present
+    name:
+      - zen-browser-bin
+    use: yay
+    state: present
 
 - name: Install Zen profile-sync-daemon profile
   become: true
-  become_user: '{{ aur_builder_user }}'
+  become_user: "{{ aur_builder_user }}"
   kewlfft.aur.aur:
-      name:
-          - profile-sync-daemon-zen
-      use: yay
-      state: present
+    name:
+      - profile-sync-daemon-zen
+    use: yay
+    state: present
+
+- name: Install speech dispatcher and associated tools
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name:
+      - speech-dispatcher
+      - espeak-ng
+    use: yay
+    state: present
