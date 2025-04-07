@@ -20,3 +20,30 @@
       - lib32-gamemode
     use: yay
     state: present
+
+- name: Install Additional gaming-adjacent tools
+  become: true
+  become_user: root
+  kewlfft.aur.aur:
+    name:
+      - lact
+      - coolercontrol
+      - coolercontrol-liqctld
+    use: yay
+    state: present
+
+- name: Enable and start lact
+  become: true
+  become_user: root
+  ansible.builtin.service:
+    name: lactd
+    enabled: true
+    state: started
+
+- name: Enable and start coolercontrold
+  become: true
+  become_user: root
+  ansible.builtin.service:
+    name: coolercontrold
+    enabled: true
+    state: started
