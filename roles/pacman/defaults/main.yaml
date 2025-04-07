@@ -1,6 +1,6 @@
 ---
 pacman_pacman:
-  update: false
-  upgrade: false
-  multilib: false
-  parallel_downloads_number: 5
+  update: "{{ pacman.update }}"
+  upgrade: "{{ pacman.upgrade }}"
+  multilib: "{{ pacman.multilib }}"
+  parallel_downloads_number: "{{ ansible_processor_vcpus }}"
