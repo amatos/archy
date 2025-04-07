@@ -1,0 +1,8 @@
+---
+- name: Install lego
+  become: true
+  become_user: root
+  community.general.pacman:
+    name:
+      - lego
+    state: present

@@ -23,5 +23,6 @@
     - { role: rclone, tags: ["rclone"] }
     - { role: btrfs_assistant, tags: ["btrfs_assistant"] }
     - { role: fastfetch, tags: ["fastfetch"] }
+    - { role: lego, tags: ["lego", "letsencrypt"] }
   tags:
     - cli
