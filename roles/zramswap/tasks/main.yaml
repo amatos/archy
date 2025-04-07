@@ -1,0 +1,26 @@
+---
+- name: Install zramswap
+  become: true
+  become_user: "{{ aur_builder_user }}"
+  kewlfft.aur.aur:
+    name: zramswap
+    use: yay
+    state: present
+  register: InstalledZramswap
+
+- name: Enable zramswap
+  become: true
+  become_user: root
+  ansible.builtin.service:
+    name: zramswap
+    enabled: true
+    state: started
+  when: InstalledZramswap
+
+- name: Copy zram parameters file
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: 99-vm-zram-parameters.conf
+    dest: /etc/sysctl.d/
+    mode: "0644"

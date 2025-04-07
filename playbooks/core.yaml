@@ -25,6 +25,7 @@
     - { role: refind, tags: ["refind"] }
     - { role: paccache, tags: ["paccache"] }
     - { role: hardening, tags: ["hardening"] }
+    - { role: zramswap, tags: ["zramswap"] }
     - { role: remind_passwd }
   tags:
     - core

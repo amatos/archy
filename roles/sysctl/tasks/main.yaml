@@ -1,0 +1,8 @@
+---
+- name: Ensure /etc/sysctl.conf exists
+  become: true
+  become_user: root
+  ansible.builtin.file:
+    path: "/etc/sysctl.conf"
+    state: touch
+    mode: "0644"
