@@ -36,7 +36,7 @@ local_machine:
       {%- endif -%}
     # aur_builder_user: "aur_builder"
     system:
-      hostname: "Necronomicon.home.matos.cc"
+      hostname: "midgard.home.matos.cc"
       locale: "en_US.UTF-8"
       timezone: "America/New_York"
       graphics_card: "amd"
