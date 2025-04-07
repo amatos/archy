@@ -1,0 +1,9 @@
+---
+- name: Install fonts
+  hosts: all
+  become: true
+  become_user: root
+  roles:
+    - role: applefonts
+  tags:
+    - fonts

@@ -38,3 +38,6 @@
 
 - name: Firewall
   ansible.builtin.import_playbook: playbooks/firewall.yaml
+
+- name: Fonts
+  ansible.builtin.import_playbook: playbooks/fonts.yaml
