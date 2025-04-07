@@ -5,3 +5,12 @@
   community.general.pacman:
     name: variety
     state: present
+
+- name: Create /usr/local/backgrounds directory
+  become: true
+  become_user: root
+  ansible.builtin.file:
+    path: /usr/local/backgrounds
+    state: directory
+    owner: "{{ user.name }}"
+    mode: "0755"
