@@ -38,4 +38,4 @@
     - { role: wayprompt }
     - { role: wlogout }
   tags:
-    - hyprland
+    - hyprland_desktop
