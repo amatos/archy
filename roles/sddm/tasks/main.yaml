@@ -27,7 +27,7 @@
     state: directory
     mode: "0755"
 
-- name: Deploy Wayland config (via Weston)
+- name: Deploy Wayland config (via kwin_wayland)
   ansible.builtin.copy:
     src: 10-wayland.conf
     dest: /etc/sddm.conf.d/
