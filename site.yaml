@@ -14,7 +14,7 @@
   ansible.builtin.import_playbook: playbooks/gui_hyprland.yaml
 
 - name: KDE
-  ansible.builtin.import_playbook: playbooks/gui_kde.yaml
+  ansible.builtin.import_playbook: playbooks/gui_plasma.yaml
 
 - name: KDE_PIM
   ansible.builtin.import_playbook: playbooks/kde_pim.yaml
